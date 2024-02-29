@@ -173,11 +173,11 @@ export class CityRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: CityEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: CityEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CITY"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -198,6 +198,6 @@ export class CityRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-companies/Cities/City").send(JSON.stringify(data));
+        producer.topic("codbex-companies/Cities/City").send(JSON.stringify(data));
     }
 }

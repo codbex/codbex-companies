@@ -26,12 +26,12 @@
             </div>
 
             <fd-fieldset class="fd-margin--md" ng-form="forms.details">
-                <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
+                <fd-form-group dg-header="Company Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Name'].$valid }}">
 	                            <fd-input id="idName"
 	                                name="Name"
@@ -53,7 +53,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idManager" dg-required="false" dg-colon="true">Manager</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--6 fd-col--9">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Manager'].$valid }}">
 	                            <fd-input id="idManager"
 	                                name="Manager"
@@ -75,7 +75,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idEmail" dg-required="false" dg-colon="true">Email</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--4 fd-col--6">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Email'].$valid }}">
 	                            <fd-input id="idEmail"
 	                                name="Email"
@@ -97,7 +97,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPhone" dg-required="false" dg-colon="true">Phone</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--2 fd-col--3">
+                        <div class="fd-col fd-col-md--4">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Phone'].$valid }}">
 	                            <fd-input id="idPhone"
 	                                name="Phone"
@@ -119,7 +119,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idAddress" dg-required="false" dg-colon="true">Address</fd-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Address'].$valid }}">
 	                            <fd-input id="idAddress"
 	                                name="Address"
@@ -141,7 +141,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPostCode" dg-required="false" dg-colon="true">PostCode</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--2 fd-col--3">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PostCode'].$valid }}">
 	                            <fd-input id="idPostCode"
 	                                name="PostCode"
@@ -163,13 +163,12 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCity" dg-required="false" dg-colon="true">City</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--6 fd-col--9">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-combobox-input id="idCity"
 	                            name="City"
 	                            state="{{ forms.details['City'].$valid ? '' : 'error' }}"
 	                            ng-required="false"
 	                            ng-model="entity.City"
-	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsCity"
 	                            dg-placeholder="Search City ...">
 	                        </fd-combobox-input>
@@ -179,13 +178,12 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCountry" dg-required="false" dg-colon="true">Country</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--4 fd-col--6">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-combobox-input id="idCountry"
 	                            name="Country"
 	                            state="{{ forms.details['Country'].$valid ? '' : 'error' }}"
 	                            ng-required="false"
 	                            ng-model="entity.Country"
-	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsCountry"
 	                            dg-placeholder="Search Country ...">
 	                        </fd-combobox-input>
@@ -195,7 +193,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idTIN" dg-required="false" dg-colon="true">TIN</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--4 fd-col--6">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['TIN'].$valid }}">
 	                            <fd-input id="idTIN"
 	                                name="TIN"
@@ -217,7 +215,7 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idIBAN" dg-required="false" dg-colon="true">IBAN</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--4 fd-col--6">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['IBAN'].$valid }}">
 	                            <fd-input id="idIBAN"
 	                                name="IBAN"
@@ -242,8 +240,12 @@
         <footer class="fd-dialog__footer fd-bar fd-bar--footer" ng-show="action !== 'select'">
             <div class="fd-bar__right">
                 <fd-button class="fd-margin-end--tiny fd-dialog__decisive-button" compact="true" dg-type="emphasized"
-                    dg-label="{{action === 'create' ? 'Create' : 'Update'}}"
-                    ng-click="action === 'create' ? create() : update()" state="{{ forms.details.$valid ? '' : 'disabled'  }}">
+                    dg-label="Filter"
+                    ng-click="filter()">
+                </fd-button>
+                <fd-button class="fd-margin-end--tiny fd-dialog__decisive-button" compact="true" dg-type="transparent"
+                    dg-label="Reset"
+                    ng-click="resetFilter()">
                 </fd-button>
                 <fd-button class="fd-dialog__decisive-button" compact="true" dg-type="transparent" dg-label="Cancel"
                     ng-click="cancel()"></fd-button>
