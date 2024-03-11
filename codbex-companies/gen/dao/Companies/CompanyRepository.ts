@@ -5,27 +5,27 @@ import { dao as daoApi } from "sdk/db";
 
 export interface CompanyEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     Manager?: string;
-    Email?: string;
+    Email: string;
     Phone?: string;
-    Address?: string;
-    PostCode?: string;
-    City?: number;
-    Country?: number;
+    Address: string;
+    PostCode: string;
+    City: number;
+    Country: number;
     TIN?: string;
     IBAN?: string;
 }
 
 export interface CompanyCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly Manager?: string;
-    readonly Email?: string;
+    readonly Email: string;
     readonly Phone?: string;
-    readonly Address?: string;
-    readonly PostCode?: string;
-    readonly City?: number;
-    readonly Country?: number;
+    readonly Address: string;
+    readonly PostCode: string;
+    readonly City: number;
+    readonly Country: number;
     readonly TIN?: string;
     readonly IBAN?: string;
 }
@@ -162,6 +162,7 @@ export class CompanyRepository {
                 name: "Name",
                 column: "COMPANY_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Manager",
@@ -172,6 +173,7 @@ export class CompanyRepository {
                 name: "Email",
                 column: "COMPANY_EMAIL",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Phone",
@@ -182,21 +184,25 @@ export class CompanyRepository {
                 name: "Address",
                 column: "COMPANY_ADDRESS",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "PostCode",
                 column: "COMPANY_POSTCODE",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "City",
                 column: "COMPANY_CITY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Country",
                 column: "COMPANY_COUNTRY",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "TIN",
@@ -289,7 +295,7 @@ export class CompanyRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: CompanyEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_COMPANY"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -302,7 +308,7 @@ export class CompanyRepository {
     }
 
     private async triggerEvent(data: CompanyEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-companies/Companies/Company", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-companies-Companies-Company", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -310,6 +316,6 @@ export class CompanyRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-companies/Companies/Company").send(JSON.stringify(data));
+        producer.topic("codbex-companies-Companies-Company").send(JSON.stringify(data));
     }
 }

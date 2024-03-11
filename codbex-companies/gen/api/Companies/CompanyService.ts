@@ -1,6 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { CompanyRepository, CompanyEntityOptions } from "../../dao/Companies/CompanyRepository";
+import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+
+const validationModules = await Extensions.loadExtensionModules("codbex-companies-Companies-Company", ["validate"]);
 
 @Controller
 class CompanyService {
@@ -24,6 +28,7 @@ class CompanyService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-companies/gen/api/Companies/CompanyService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -66,7 +71,7 @@ class CompanyService {
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
-                return entity
+                return entity;
             } else {
                 HttpUtils.sendResponseNotFound("Company not found");
             }
@@ -79,6 +84,7 @@ class CompanyService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -111,4 +117,53 @@ class CompanyService {
             HttpUtils.sendInternalServerError(error.message);
         }
     }
+
+    private validateEntity(entity: any): void {
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
+        if (entity.Name?.length > 100) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Manager?.length > 50) {
+            throw new ValidationError(`The 'Manager' exceeds the maximum length of [50] characters`);
+        }
+        if (entity.Email === null || entity.Email === undefined) {
+            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
+        }
+        if (entity.Email?.length > 100) {
+            throw new ValidationError(`The 'Email' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Phone?.length > 20) {
+            throw new ValidationError(`The 'Phone' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.Address === null || entity.Address === undefined) {
+            throw new ValidationError(`The 'Address' property is required, provide a valid value`);
+        }
+        if (entity.Address?.length > 200) {
+            throw new ValidationError(`The 'Address' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.PostCode === null || entity.PostCode === undefined) {
+            throw new ValidationError(`The 'PostCode' property is required, provide a valid value`);
+        }
+        if (entity.PostCode?.length > 20) {
+            throw new ValidationError(`The 'PostCode' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.City === null || entity.City === undefined) {
+            throw new ValidationError(`The 'City' property is required, provide a valid value`);
+        }
+        if (entity.Country === null || entity.Country === undefined) {
+            throw new ValidationError(`The 'Country' property is required, provide a valid value`);
+        }
+        if (entity.TIN?.length > 20) {
+            throw new ValidationError(`The 'TIN' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.IBAN?.length > 22) {
+            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [22] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
+        }
+    }
+
 }

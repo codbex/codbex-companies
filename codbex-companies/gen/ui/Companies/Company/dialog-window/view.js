@@ -7,7 +7,7 @@ const viewData = {
     id: "Company-details",
     label: "Company",
     link: "/services/web/codbex-companies/gen/ui/Companies/Company/dialog-window/index.html",
-    perspectiveName: "Companies"
+    perspectiveName: "Companies",
 };
 
 if (typeof exports !== 'undefined') {
