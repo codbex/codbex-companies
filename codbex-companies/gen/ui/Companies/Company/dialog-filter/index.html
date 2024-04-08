@@ -25,18 +25,17 @@
 		        </fd-button>
             </div>
 
-            <fd-fieldset class="fd-margin--md" ng-form="forms.details">
+            <fd-fieldset ng-form="forms.details">
                 <fd-form-group dg-header="Company Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idName" dg-required="true" dg-colon="true">Name</fd-form-label>
+                        	<fd-form-label for="idName" dg-colon="true">Name</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Name'].$valid }}">
 	                            <fd-input id="idName"
 	                                name="Name"
 	                                state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Name"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="100.0 || -1"
@@ -49,14 +48,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idManager" dg-required="false" dg-colon="true">Manager</fd-form-label>
+                        	<fd-form-label for="idManager" dg-colon="true">Manager</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Manager'].$valid }}">
 	                            <fd-input id="idManager"
 	                                name="Manager"
 	                                state="{{ forms.details['Manager'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Manager"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="50.0 || -1"
@@ -69,14 +67,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEmail" dg-required="true" dg-colon="true">Email</fd-form-label>
+                        	<fd-form-label for="idEmail" dg-colon="true">Email</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Email'].$valid }}">
 	                            <fd-input id="idEmail"
 	                                name="Email"
 	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Email"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="100.0 || -1"
@@ -89,14 +86,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPhone" dg-required="false" dg-colon="true">Phone</fd-form-label>
+                        	<fd-form-label for="idPhone" dg-colon="true">Phone</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Phone'].$valid }}">
 	                            <fd-input id="idPhone"
 	                                name="Phone"
 	                                state="{{ forms.details['Phone'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Phone"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="20.0 || -1"
@@ -109,14 +105,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAddress" dg-required="true" dg-colon="true">Address</fd-form-label>
+                        	<fd-form-label for="idAddress" dg-colon="true">Address</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Address'].$valid }}">
 	                            <fd-input id="idAddress"
 	                                name="Address"
 	                                state="{{ forms.details['Address'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Address"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="200.0 || -1"
@@ -129,14 +124,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPostCode" dg-required="true" dg-colon="true">PostCode</fd-form-label>
+                        	<fd-form-label for="idPostCode" dg-colon="true">PostCode</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PostCode'].$valid }}">
 	                            <fd-input id="idPostCode"
 	                                name="PostCode"
 	                                state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.PostCode"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="20.0 || -1"
@@ -149,13 +143,12 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCity" dg-required="true" dg-colon="true">City</fd-form-label>
+                        	<fd-form-label for="idCity" dg-colon="true">City</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-combobox-input id="idCity"
 	                            name="City"
 	                            state="{{ forms.details['City'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
 	                            ng-model="entity.City"
 	                            dropdown-items="optionsCity"
 	                            dg-placeholder="Search City ...">
@@ -164,13 +157,12 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCountry" dg-required="true" dg-colon="true">Country</fd-form-label>
+                        	<fd-form-label for="idCountry" dg-colon="true">Country</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-combobox-input id="idCountry"
 	                            name="Country"
 	                            state="{{ forms.details['Country'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
 	                            ng-model="entity.Country"
 	                            dropdown-items="optionsCountry"
 	                            dg-placeholder="Search Country ...">
@@ -179,14 +171,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTIN" dg-required="false" dg-colon="true">TIN</fd-form-label>
+                        	<fd-form-label for="idTIN" dg-colon="true">TIN</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['TIN'].$valid }}">
 	                            <fd-input id="idTIN"
 	                                name="TIN"
 	                                state="{{ forms.details['TIN'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.TIN"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="20.0 || -1"
@@ -199,14 +190,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idIBAN" dg-required="false" dg-colon="true">IBAN</fd-form-label>
+                        	<fd-form-label for="idIBAN" dg-colon="true">IBAN</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['IBAN'].$valid }}">
 	                            <fd-input id="idIBAN"
 	                                name="IBAN"
 	                                state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.IBAN"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="22.0 || -1"
@@ -221,20 +211,19 @@
             </fd-fieldset>
         </fd-scrollbar>
 
-        <footer class="fd-dialog__footer fd-bar fd-bar--footer" ng-show="action !== 'select'">
-            <div class="fd-bar__right">
-                <fd-button class="fd-margin-end--tiny fd-dialog__decisive-button" compact="true" dg-type="emphasized"
-                    dg-label="Filter"
-                    ng-click="filter()">
-                </fd-button>
-                <fd-button class="fd-margin-end--tiny fd-dialog__decisive-button" compact="true" dg-type="transparent"
-                    dg-label="Reset"
-                    ng-click="resetFilter()">
-                </fd-button>
-                <fd-button class="fd-dialog__decisive-button" compact="true" dg-type="transparent" dg-label="Cancel"
-                    ng-click="cancel()"></fd-button>
-            </div>
-        </footer>
+		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+			<fd-bar-right>
+				<fd-bar-element>
+					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>
+				</fd-bar-element>
+				<fd-bar-element>
+					<fd-button dg-label="Reset" dg-type="transparent" ng-click="resetFilter()"></fd-button>
+				</fd-bar-element>
+				<fd-bar-element>
+					<fd-button dg-label="Cancel" dg-type="transparent" ng-click="cancel()"></fd-button>
+				</fd-bar-element>
+			</fd-bar-right>
+		</fd-bar>
 
     </body>
 
