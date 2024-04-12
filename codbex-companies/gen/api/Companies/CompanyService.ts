@@ -158,8 +158,8 @@ class CompanyService {
         if (entity.TIN?.length > 20) {
             throw new ValidationError(`The 'TIN' exceeds the maximum length of [20] characters`);
         }
-        if (entity.IBAN?.length > 22) {
-            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [22] characters`);
+        if (entity.IBAN?.length > 34) {
+            throw new ValidationError(`The 'IBAN' exceeds the maximum length of [34] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

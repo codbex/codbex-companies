@@ -215,7 +215,7 @@
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "false",
-                        "dataLength": "22",
+                        "dataLength": "34",
                         "dataName": "COMPANY_IBAN",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
@@ -227,7 +227,7 @@
                         "isRequiredProperty": "false",
                         "name": "IBAN",
                         "widgetIsMajor": "true",
-                        "widgetLength": "22",
+                        "widgetLength": "34",
                         "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "TEXTBOX"
                     }

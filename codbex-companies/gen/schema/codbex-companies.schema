@@ -81,7 +81,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 22,
+                        "length": 34,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,

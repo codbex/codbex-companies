@@ -4,11 +4,11 @@
   "brandUrl": "https://codbex.com",
   "title": "Companies Management Module",
   "description": "Managing companies data",
+  "dataSource": "DefaultDB",
   "projectName": "codbex-companies",
   "workspaceName": "workspace",
   "filePath": "codbex-companies.model",
   "templateId": "template-application-angular/template/template.js",
-  "dataSource": "DefaultDB",
   "perspectives": {
     "Companies": {
       "views": [
@@ -330,7 +330,7 @@
           "calculatedPropertyExpressionCreate": "",
           "calculatedPropertyExpressionUpdate": "",
           "dataAutoIncrement": false,
-          "dataLength": "22",
+          "dataLength": "34",
           "dataName": "COMPANY_IBAN",
           "dataNullable": true,
           "dataPrecision": "NaN",
@@ -342,7 +342,7 @@
           "isRequiredProperty": false,
           "name": "IBAN",
           "widgetIsMajor": true,
-          "widgetLength": "22",
+          "widgetLength": "34",
           "widgetSize": "fd-col-md--4 fd-col--6",
           "widgetType": "TEXTBOX",
           "dataNotNull": false,
@@ -351,7 +351,7 @@
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
           "minLength": 0,
-          "maxLength": 22,
+          "maxLength": 34,
           "inputRule": ""
         }
       ],
