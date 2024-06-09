@@ -164,7 +164,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Company_City",
                         "relationshipEntityName": "City",
-                        "relationshipEntityPerspectiveName": "Cities"
+                        "relationshipEntityPerspectiveName": "Cities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -189,7 +190,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Company_Country",
                         "relationshipEntityName": "Country",
-                        "relationshipEntityPerspectiveName": "Countries"
+                        "relationshipEntityPerspectiveName": "Countries",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "calculatedPropertyExpressionCreate": "",
@@ -236,7 +238,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COMPANY\"",
                 "dataName": "COMPANY",
                 "dataQuery": "",
-                "disableGeneration": "false",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -245,12 +247,13 @@
                 "name": "Company",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveLabel": "Companies",
                 "perspectiveName": "Companies",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "Company",
                 "tooltip": "Company",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -321,7 +324,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}CITY\"",
                 "dataName": "CITY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -330,6 +333,7 @@
                 "name": "City",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/building.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Cities",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
@@ -436,7 +440,7 @@
                 "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COUNTRY\"",
                 "dataName": "COUNTRY",
                 "dataQuery": "",
-                "disableGeneration": "true",
+                "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE",
                 "menuIndex": "100",
@@ -445,6 +449,7 @@
                 "name": "Country",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/globe.svg",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Countries",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
