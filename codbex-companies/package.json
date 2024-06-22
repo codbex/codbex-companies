@@ -11,6 +11,6 @@
     "dependencies": {
         "@codbex/codbex-countries": "0.1.0",
         "@codbex/codbex-countries-data": "0.1.0",
-        "@codbex/codbex-cities": "0.1.0"
+        "@codbex/codbex-cities": "0.1.1"
     }
 }
