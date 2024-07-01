@@ -1,0 +1,93 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_COMPANY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COMPANY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "COMPANY_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "COMPANY_MANAGER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "name": "COMPANY_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_PHONE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "COMPANY_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "COMPANY_POSTCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "name": "COMPANY_CITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "name": "COMPANY_COUNTRY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_TIN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 34,
+                        "nullable": true,
+                        "name": "COMPANY_IBAN"
+                    }
+                ]
+            },
+            {
+                "name": "Company_City",
+                "type": "foreignKey",
+                "table": "CODBEX_COMPANY",
+                "constraintName": "Company_City",
+                "columns": "COMPANY_CITY",
+                "referencedTable": "CODBEX_CITY",
+                "referencedColumns": "CITY_ID"
+            },
+            {
+                "name": "Company_Country",
+                "type": "foreignKey",
+                "table": "CODBEX_COMPANY",
+                "constraintName": "Company_Country",
+                "columns": "COMPANY_COUNTRY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
