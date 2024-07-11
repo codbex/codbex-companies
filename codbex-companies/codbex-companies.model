@@ -104,7 +104,7 @@
                     },
                     {
                         "dataName": "COMPANY_COUNTRY",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "Country",

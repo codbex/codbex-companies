@@ -50,7 +50,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "COMPANY_COUNTRY"
                     },
                     {
