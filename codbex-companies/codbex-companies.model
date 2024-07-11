@@ -104,7 +104,7 @@
                     },
                     {
                         "dataName": "COMPANY_COUNTRY",
-                        "dataNullable": "false",
+                        "dataNullable": "true",
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "Country",
@@ -117,7 +117,7 @@
                         "relationshipName": "Company_Country",
                         "relationshipEntityName": "Country",
                         "relationshipEntityPerspectiveName": "Countries",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "relationshipEntityPerspectiveLabel": "Countries"
                     },
                     {
                         "dataLength": "20",
@@ -249,7 +249,7 @@
                         "name": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--4 fd-col--6",
                         "widgetType": "TEXTBOX"
                     },
                     {
@@ -261,7 +261,7 @@
                         "name": "Code2",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--2 fd-col--3",
                         "widgetType": "TEXTBOX"
                     },
                     {
@@ -273,7 +273,7 @@
                         "name": "Code3",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--2 fd-col--3",
                         "widgetType": "TEXTBOX"
                     },
                     {
@@ -285,7 +285,7 @@
                         "name": "Numeric",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "",
+                        "widgetSize": "fd-col-md--2 fd-col--3",
                         "widgetType": "TEXTBOX"
                     }
                 ],
@@ -302,12 +302,12 @@
                 "name": "Country",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/globe.svg",
-                "perspectiveLabel": "Entities",
+                "perspectiveLabel": "Countries",
                 "perspectiveName": "Countries",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Country",
-                "projectionReferencedModel": "/workspace/codbex-cities/codbex-cities.model",
+                "projectionReferencedModel": "/workspace/codbex-countries/codbex-countries.model",
                 "title": "Country",
                 "tooltip": "Country",
                 "type": "PROJECTION"
