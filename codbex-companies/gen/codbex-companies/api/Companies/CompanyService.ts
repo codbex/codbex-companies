@@ -152,9 +152,6 @@ class CompanyService {
         if (entity.City === null || entity.City === undefined) {
             throw new ValidationError(`The 'City' property is required, provide a valid value`);
         }
-        if (entity.Country === null || entity.Country === undefined) {
-            throw new ValidationError(`The 'Country' property is required, provide a valid value`);
-        }
         if (entity.TIN?.length > 20) {
             throw new ValidationError(`The 'TIN' exceeds the maximum length of [20] characters`);
         }

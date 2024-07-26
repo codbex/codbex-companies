@@ -449,7 +449,6 @@ components:
         - Address
         - PostCode
         - City
-        - Country
       properties:
         Id:
           type: integer

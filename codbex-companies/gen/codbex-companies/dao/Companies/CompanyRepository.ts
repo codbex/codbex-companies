@@ -12,7 +12,7 @@ export interface CompanyEntity {
     Address: string;
     PostCode: string;
     City: number;
-    Country: number;
+    Country?: number;
     TIN?: string;
     IBAN?: string;
 }
@@ -25,7 +25,7 @@ export interface CompanyCreateEntity {
     readonly Address: string;
     readonly PostCode: string;
     readonly City: number;
-    readonly Country: number;
+    readonly Country?: number;
     readonly TIN?: string;
     readonly IBAN?: string;
 }
@@ -206,7 +206,6 @@ export class CompanyRepository {
                 name: "Country",
                 column: "COMPANY_COUNTRY",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "TIN",

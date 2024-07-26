@@ -104,9 +104,8 @@
                     },
                     {
                         "dataName": "COMPANY_COUNTRY",
-                        "dataNullable": "false",
+                        "dataNullable": "true",
                         "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
                         "name": "Country",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
