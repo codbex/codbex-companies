@@ -11,8 +11,8 @@ export interface CompanyEntity {
     Phone?: string;
     Address: string;
     PostCode: string;
-    City: number;
     Country: number;
+    City: number;
     TIN?: string;
     IBAN?: string;
 }
@@ -24,8 +24,8 @@ export interface CompanyCreateEntity {
     readonly Phone?: string;
     readonly Address: string;
     readonly PostCode: string;
-    readonly City: number;
     readonly Country: number;
+    readonly City: number;
     readonly TIN?: string;
     readonly IBAN?: string;
 }
@@ -44,8 +44,8 @@ export interface CompanyEntityOptions {
             Phone?: string | string[];
             Address?: string | string[];
             PostCode?: string | string[];
-            City?: number | number[];
             Country?: number | number[];
+            City?: number | number[];
             TIN?: string | string[];
             IBAN?: string | string[];
         };
@@ -57,8 +57,8 @@ export interface CompanyEntityOptions {
             Phone?: string | string[];
             Address?: string | string[];
             PostCode?: string | string[];
-            City?: number | number[];
             Country?: number | number[];
+            City?: number | number[];
             TIN?: string | string[];
             IBAN?: string | string[];
         };
@@ -70,8 +70,8 @@ export interface CompanyEntityOptions {
             Phone?: string;
             Address?: string;
             PostCode?: string;
-            City?: number;
             Country?: number;
+            City?: number;
             TIN?: string;
             IBAN?: string;
         };
@@ -83,8 +83,8 @@ export interface CompanyEntityOptions {
             Phone?: string;
             Address?: string;
             PostCode?: string;
-            City?: number;
             Country?: number;
+            City?: number;
             TIN?: string;
             IBAN?: string;
         };
@@ -96,8 +96,8 @@ export interface CompanyEntityOptions {
             Phone?: string;
             Address?: string;
             PostCode?: string;
-            City?: number;
             Country?: number;
+            City?: number;
             TIN?: string;
             IBAN?: string;
         };
@@ -109,8 +109,8 @@ export interface CompanyEntityOptions {
             Phone?: string;
             Address?: string;
             PostCode?: string;
-            City?: number;
             Country?: number;
+            City?: number;
             TIN?: string;
             IBAN?: string;
         };
@@ -122,8 +122,8 @@ export interface CompanyEntityOptions {
             Phone?: string;
             Address?: string;
             PostCode?: string;
-            City?: number;
             Country?: number;
+            City?: number;
             TIN?: string;
             IBAN?: string;
         };
@@ -197,14 +197,14 @@ export class CompanyRepository {
                 required: true
             },
             {
-                name: "City",
-                column: "COMPANY_CITY",
+                name: "Country",
+                column: "COMPANY_COUNTRY",
                 type: "INTEGER",
                 required: true
             },
             {
-                name: "Country",
-                column: "COMPANY_COUNTRY",
+                name: "City",
+                column: "COMPANY_CITY",
                 type: "INTEGER",
                 required: true
             },

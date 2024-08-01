@@ -86,23 +86,6 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "COMPANY_CITY",
-                        "dataNullable": "false",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "City",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Company_City",
-                        "relationshipEntityName": "City",
-                        "relationshipEntityPerspectiveName": "Cities",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataName": "COMPANY_COUNTRY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -118,6 +101,24 @@
                         "relationshipEntityName": "Country",
                         "relationshipEntityPerspectiveName": "Countries",
                         "relationshipEntityPerspectiveLabel": "Countries"
+                    },
+                    {
+                        "dataName": "COMPANY_CITY",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "City",
+                        "widgetDropDownDependsOn": "Country",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Company_City",
+                        "relationshipEntityName": "City",
+                        "relationshipEntityPerspectiveName": "Cities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "20",

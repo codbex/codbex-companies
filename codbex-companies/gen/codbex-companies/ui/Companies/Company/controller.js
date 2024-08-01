@@ -107,16 +107,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Company-details", {
 				action: "select",
 				entity: entity,
-				optionsCity: $scope.optionsCity,
 				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Company-filter", {
 				entity: $scope.filterEntity,
-				optionsCity: $scope.optionsCity,
 				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			});
 		};
 
@@ -125,8 +125,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Company-details", {
 				action: "create",
 				entity: {},
-				optionsCity: $scope.optionsCity,
 				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			}, null, false);
 		};
 
@@ -134,8 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Company-details", {
 				action: "update",
 				entity: entity,
-				optionsCity: $scope.optionsCity,
 				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 			}, null, false);
 		};
 
@@ -169,18 +169,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsCity = [];
 		$scope.optionsCountry = [];
+		$scope.optionsCity = [];
 
-
-		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
-			$scope.optionsCity = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 
 		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
 			$scope.optionsCountry = response.data.map(e => {
@@ -191,18 +182,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsCityValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsCity.length; i++) {
-				if ($scope.optionsCity[i].value === optionKey) {
-					return $scope.optionsCity[i].text;
+		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
+			$scope.optionsCity = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
 				}
-			}
-			return null;
-		};
+			});
+		});
+
 		$scope.optionsCountryValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCountry.length; i++) {
 				if ($scope.optionsCountry[i].value === optionKey) {
 					return $scope.optionsCountry[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCityValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCity.length; i++) {
+				if ($scope.optionsCity[i].value === optionKey) {
+					return $scope.optionsCity[i].text;
 				}
 			}
 			return null;

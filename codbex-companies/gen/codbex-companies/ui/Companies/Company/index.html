@@ -34,8 +34,8 @@
 						<th fd-table-header-cell>Phone</th>
 						<th fd-table-header-cell>Address</th>
 						<th fd-table-header-cell>PostCode</th>
-						<th fd-table-header-cell>City</th>
 						<th fd-table-header-cell>Country</th>
+						<th fd-table-header-cell>City</th>
 						<th fd-table-header-cell>TIN</th>
 						<th fd-table-header-cell>IBAN</th>
 						<th fd-table-header-cell></th>
@@ -56,10 +56,10 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Address}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.PostCode}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCityValue(next.City)}}
+							{{optionsCountryValue(next.Country)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsCountryValue(next.Country)}}
+							{{optionsCityValue(next.City)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.TIN}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.IBAN}}</td>
