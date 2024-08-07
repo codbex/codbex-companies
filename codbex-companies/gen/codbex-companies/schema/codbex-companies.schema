@@ -46,11 +46,11 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "COMPANY_CITY"
+                        "name": "COMPANY_COUNTRY"
                     },
                     {
                         "type": "INTEGER",
-                        "name": "COMPANY_COUNTRY"
+                        "name": "COMPANY_CITY"
                     },
                     {
                         "type": "VARCHAR",
@@ -67,15 +67,6 @@
                 ]
             },
             {
-                "name": "Company_City",
-                "type": "foreignKey",
-                "table": "CODBEX_COMPANY",
-                "constraintName": "Company_City",
-                "columns": "COMPANY_CITY",
-                "referencedTable": "CODBEX_CITY",
-                "referencedColumns": "CITY_ID"
-            },
-            {
                 "name": "Company_Country",
                 "type": "foreignKey",
                 "table": "CODBEX_COMPANY",
@@ -83,6 +74,15 @@
                 "columns": "COMPANY_COUNTRY",
                 "referencedTable": "CODBEX_COUNTRY",
                 "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Company_City",
+                "type": "foreignKey",
+                "table": "CODBEX_COMPANY",
+                "constraintName": "Company_City",
+                "columns": "COMPANY_CITY",
+                "referencedTable": "CODBEX_CITY",
+                "referencedColumns": "CITY_ID"
             }
         ]
     },
