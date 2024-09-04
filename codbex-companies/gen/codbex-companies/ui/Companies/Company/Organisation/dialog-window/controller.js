@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Company';
+		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Organisation';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/OrganisationService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -12,9 +12,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Company Details",
-			create: "Create Company",
-			update: "Update Company"
+			select: "Organisation Details",
+			create: "Create Organisation",
+			update: "Update Organisation"
 		};
 		$scope.action = 'select';
 
@@ -24,8 +24,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsCountry = params.optionsCountry;
-			$scope.optionsCity = params.optionsCity;
 		}
 
 		$scope.create = function () {
@@ -33,12 +31,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					$scope.errorMessage = `Unable to create Company: '${response.message}'`;
+					messageHub.showAlertError("Organisation", `Unable to create Organisation: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Company", "Company successfully created");
+				messageHub.showAlertSuccess("Organisation", "Organisation successfully created");
 			});
 		};
 
@@ -48,45 +46,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					$scope.errorMessage = `Unable to update Company: '${response.message}'`;
+					messageHub.showAlertError("Organisation", `Unable to update Organisation: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("Company", "Company successfully updated");
+				messageHub.showAlertSuccess("Organisation", "Organisation successfully updated");
 			});
 		};
-
-		$scope.$watch('entity.Country', function (newValue, oldValue) {
-			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.post("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts/search", {
-					$filter: {
-						equals: {
-							Country: newValue
-						}
-					}
-				}).then(function (response) {
-					$scope.optionsCity = response.data.map(e => {
-						return {
-							value: e.Id,
-							text: e.Name
-						}
-					});
-					if ($scope.action !== 'select' && newValue !== oldValue) {
-						$scope.entity.City = undefined;
-					}
-				});
-			}
-		});
 
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("Company-details");
-		};
-
-		$scope.clearErrorMessage = function () {
-			$scope.errorMessage = null;
+			messageHub.closeDialogWindow("Organisation-details");
 		};
 
 	}]);

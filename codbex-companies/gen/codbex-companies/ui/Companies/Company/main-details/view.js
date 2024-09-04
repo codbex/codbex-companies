@@ -6,12 +6,14 @@
 const viewData = {
     id: "Company-details",
     label: "Company",
-    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/dialog-window/index.html",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/main-details/index.html",
     perspectiveName: "Companies",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

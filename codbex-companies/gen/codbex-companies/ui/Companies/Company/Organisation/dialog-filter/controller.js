@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Company';
+		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Organisation';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,8 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsCountry = params.optionsCountry;
-			$scope.optionsCity = params.optionsCity;
 		}
 
 		$scope.filter = function () {
@@ -44,38 +42,16 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Manager) {
-				filter.$filter.contains.Manager = entity.Manager;
+			if (entity.CostCenter) {
+				filter.$filter.contains.CostCenter = entity.CostCenter;
 			}
-			if (entity.Email) {
-				filter.$filter.contains.Email = entity.Email;
-			}
-			if (entity.Phone) {
-				filter.$filter.contains.Phone = entity.Phone;
-			}
-			if (entity.Address) {
-				filter.$filter.contains.Address = entity.Address;
-			}
-			if (entity.PostCode) {
-				filter.$filter.contains.PostCode = entity.PostCode;
-			}
-			if (entity.Country !== undefined) {
-				filter.$filter.equals.Country = entity.Country;
-			}
-			if (entity.City !== undefined) {
-				filter.$filter.equals.City = entity.City;
-			}
-			if (entity.TIN) {
-				filter.$filter.contains.TIN = entity.TIN;
-			}
-			if (entity.IBAN) {
-				filter.$filter.contains.IBAN = entity.IBAN;
+			if (entity.Company !== undefined) {
+				filter.$filter.equals.Company = entity.Company;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
 			});
-			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 
@@ -85,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Company-filter");
+			messageHub.closeDialogWindow("Organisation-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

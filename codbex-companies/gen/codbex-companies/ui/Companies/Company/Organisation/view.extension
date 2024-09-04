@@ -1,0 +1,5 @@
+{
+    "module": "codbex-companies/gen/codbex-companies/ui/Companies/Company/Organisation/view.js",
+    "extensionPoint": "codbex-companies-view",
+    "description": "codbex-companies - Application View - Details"
+}

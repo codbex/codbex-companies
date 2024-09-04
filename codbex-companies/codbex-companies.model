@@ -108,7 +108,6 @@
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "City",
-                        "widgetDropDownDependsOn": "Country",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
@@ -149,7 +148,7 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "company",
                 "menuLabel": "Company",
@@ -162,7 +161,7 @@
                 "perspectiveRole": "",
                 "title": "Company",
                 "tooltip": "Company",
-                "type": "SETTING"
+                "type": "PRIMARY"
             },
             {
                 "properties": [
@@ -312,6 +311,143 @@
                 "title": "Country",
                 "tooltip": "Country",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "ORGANISATION_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "50",
+                        "dataName": "ORGANISATION_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "10",
+                        "dataName": "ORGANISATION_COSTCENTER",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "CostCenter",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "ORGANISATION_COMPANY",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Company",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Organisation_Company",
+                        "relationshipType": "COMPOSITION",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "Company",
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    }
+                ],
+                "caption": "Manage entity Organisation",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}ORGANISATION\"",
+                "dataName": "ORGANISATION",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "organisation",
+                "menuLabel": "Organisation",
+                "name": "Organisation",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveLabel": "Companies",
+                "perspectiveName": "Companies",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "Organisation",
+                "tooltip": "Organisation",
+                "type": "DEPENDENT"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "DEPARTMENT_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "DEPARTMENT_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "DEPARTMENT_ORGANISATION",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Organisation",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipName": "Department_Organisation",
+                        "relationshipEntityName": "Organisation",
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    }
+                ],
+                "caption": "Manage entity Department",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}DEPARTMENT\"",
+                "dataName": "DEPARTMENT",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "department",
+                "menuLabel": "Department",
+                "name": "Department",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveLabel": "Organisation",
+                "perspectiveName": "Organisation",
+                "perspectiveOrder": "101",
+                "perspectiveRole": "",
+                "title": "Department",
+                "tooltip": "Department",
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [
@@ -320,6 +456,13 @@
                 "label": "Companies",
                 "icon": "/services/web/resources/unicons/university.svg",
                 "order": "100",
+                "role": {}
+            },
+            {
+                "name": "Organisation",
+                "label": "Organisation",
+                "icon": "/services/web/resources/unicons/university.svg",
+                "order": "101",
                 "role": {}
             }
         ],

@@ -9,7 +9,7 @@ exports.getTile = function () {
         name: "Company",
         caption: "Manage entity Company",
         tooltip: "Company",
-        type: "SETTING",
+        type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/index.html",

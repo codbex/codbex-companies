@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Company",
-    label: "Company",
+    id: "Organisation",
+    label: "Organisation",
     factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/index.html",
+    region: "bottom",
+    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/Organisation/index.html",
     perspectiveName: "Companies",
 };
 
