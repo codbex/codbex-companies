@@ -67,7 +67,7 @@
                 ]
             },
             {
-                "name": "CODBEX_ORGANISATION",
+                "name": "CODBEX_ORGANIZATION",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -75,48 +75,24 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "ORGANISATION_ID"
+                        "name": "ORGANIZATION_ID"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 50,
                         "nullable": true,
-                        "name": "ORGANISATION_NAME"
+                        "name": "ORGANIZATION_NAME"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 10,
                         "nullable": true,
-                        "name": "ORGANISATION_COSTCENTER"
+                        "name": "ORGANIZATION_COSTCENTER"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ORGANISATION_COMPANY"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_DEPARTMENT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "DEPARTMENT_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "DEPARTMENT_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "DEPARTMENT_ORGANISATION"
+                        "name": "ORGANIZATION_COMPANY"
                     }
                 ]
             },
@@ -139,22 +115,13 @@
                 "referencedColumns": "CITY_ID"
             },
             {
-                "name": "Organisation_Company",
+                "name": "Organization_Company",
                 "type": "foreignKey",
-                "table": "CODBEX_ORGANISATION",
-                "constraintName": "Organisation_Company",
-                "columns": "ORGANISATION_COMPANY",
+                "table": "CODBEX_ORGANIZATION",
+                "constraintName": "Organization_Company",
+                "columns": "ORGANIZATION_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "Department_Organisation",
-                "type": "foreignKey",
-                "table": "CODBEX_DEPARTMENT",
-                "constraintName": "Department_Organisation",
-                "columns": "DEPARTMENT_ORGANISATION",
-                "referencedTable": "CODBEX_ORGANISATION",
-                "referencedColumns": "ORGANISATION_ID"
             }
         ]
     },

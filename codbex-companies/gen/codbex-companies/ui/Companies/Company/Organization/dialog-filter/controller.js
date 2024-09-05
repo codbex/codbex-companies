@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Organisation';
+		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Organization';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -61,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Organisation-filter");
+			messageHub.closeDialogWindow("Organization-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

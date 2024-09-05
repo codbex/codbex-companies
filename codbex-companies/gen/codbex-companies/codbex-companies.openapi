@@ -11,7 +11,6 @@ servers:
 tags:
   - name: Companies
   - name: Companies
-  - name: Organisation
 paths:
   /codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts:
     get:
@@ -441,9 +440,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Companies/OrganisationService.ts:
+  /codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts:
     get:
-      summary: List Organisation
+      summary: List Organization
       parameters:
         - in: query
           name: $limit
@@ -471,7 +470,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
+                    $ref: '#/components/schemas/Organization'
         400:
           description: Bad Request Error
           content:
@@ -491,14 +490,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create Organisation
+      summary: Create Organization
       tags:
         - Companies
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Organisation'
+              $ref: '#/components/schemas/Organization'
         required: true
       responses:
         201:
@@ -506,7 +505,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organisation'
+                $ref: '#/components/schemas/Organization'
         400:
           description: Bad Request Error
           content:
@@ -525,9 +524,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Companies/OrganisationService.ts/{id}:
+  /codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts/{id}:
     get:
-      summary: Get Organisation by Id
+      summary: Get Organization by Id
       parameters:
         - in: path
           name: id
@@ -545,7 +544,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
+                    $ref: '#/components/schemas/Organization'
         404:
           description: Entity Not Found
           content:
@@ -565,7 +564,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update Organisation by Id
+      summary: Update Organization by Id
       parameters:
         - in: path
           name: id
@@ -579,7 +578,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Organisation'
+              $ref: '#/components/schemas/Organization'
         required: true
       responses:
         200:
@@ -587,7 +586,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organisation'
+                $ref: '#/components/schemas/Organization'
         400:
           description: Bad Request Error
           content:
@@ -613,7 +612,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete Organisation by Id
+      summary: Delete Organization by Id
       parameters:
         - in: path
           name: id
@@ -644,9 +643,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Companies/OrganisationService.ts/count:
+  /codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts/count:
     get:
-      summary: Count the number of Organisation
+      summary: Count the number of Organization
       tags:
         - Companies
       responses:
@@ -670,14 +669,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of Organisation by OrganisationFilterOptions
+      summary: Count the number of Organization by OrganizationFilterOptions
       tags:
         - Companies
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganisationFilterOptions'
+              $ref: '#/components/schemas/OrganizationFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -756,16 +755,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Companies/OrganisationService.ts/search:
+  /codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts/search:
     post:
-      summary: Search Organisation by OrganisationFilterOptions
+      summary: Search Organization by OrganizationFilterOptions
       tags:
         - Companies
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganisationFilterOptions'
+              $ref: '#/components/schemas/OrganizationFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -832,407 +831,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Organisation'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts:
-    get:
-      summary: List Department
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - Organisation
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Department'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create Department
-      tags:
-        - Organisation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Department'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Department'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts/{id}:
-    get:
-      summary: Get Department by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Organisation
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Department'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update Department by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Organisation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Department'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Department'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete Department by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Organisation
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts/count:
-    get:
-      summary: Count the number of Department
-      tags:
-        - Organisation
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of Department by DepartmentFilterOptions
-      tags:
-        - Organisation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DepartmentFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts/search:
-    post:
-      summary: Search Department by DepartmentFilterOptions
-      tags:
-        - Organisation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DepartmentFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Department'
+                    $ref: '#/components/schemas/Organization'
         403:
           description: Forbidden Error
           content:
@@ -1766,7 +1365,7 @@ components:
         $limit:
           type: integer
           example: 10
-    Organisation:
+    Organization:
       type: object
       required:
         - Name
@@ -1785,7 +1384,7 @@ components:
         Company:
           type: integer
           format: int32
-    OrganisationFilterOptions:
+    OrganizationFilterOptions:
       type: object
       properties:
         $filter:
@@ -1962,166 +1561,6 @@ components:
         $sort:
           - type: string
             example: "Id,Name,CostCenter,Company"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    Department:
-      type: object
-      required:
-        - Name
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 20
-        Organisation:
-          type: integer
-          format: int32
-    DepartmentFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Organisation:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Organisation:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            contains:
-              type: object
-              properties:
-                Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
-                  type: integer
-                  format: int32
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
-                  type: integer
-                  format: int32
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
-                  type: integer
-                  format: int32
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Organisation:
-                  type: integer
-                  format: int32
-        $select:
-          type: array
-          example: ["Id", "Name", "Organisation"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Name,Organisation"
         $order:
           type: string
           enum: ["asc", "desc"]

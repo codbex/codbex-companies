@@ -1,5 +1,5 @@
 {
-    "module": "codbex-companies/gen/codbex-companies/ui/Companies/Company/Organisation/dialog-window/view.js",
+    "module": "codbex-companies/gen/codbex-companies/ui/Companies/Company/Organization/dialog-filter/view.js",
     "extensionPoint": "codbex-companies-dialog-window",
     "description": "codbex-companies - Application Dialog Window"
 }

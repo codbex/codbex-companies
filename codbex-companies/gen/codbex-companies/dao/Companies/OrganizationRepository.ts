@@ -3,70 +3,79 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface DepartmentEntity {
+export interface OrganizationEntity {
     readonly Id: number;
     Name?: string;
-    Organisation?: number;
+    CostCenter?: string;
+    Company?: number;
 }
 
-export interface DepartmentCreateEntity {
+export interface OrganizationCreateEntity {
     readonly Name?: string;
-    readonly Organisation?: number;
+    readonly CostCenter?: string;
+    readonly Company?: number;
 }
 
-export interface DepartmentUpdateEntity extends DepartmentCreateEntity {
+export interface OrganizationUpdateEntity extends OrganizationCreateEntity {
     readonly Id: number;
 }
 
-export interface DepartmentEntityOptions {
+export interface OrganizationEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Organisation?: number | number[];
+            CostCenter?: string | string[];
+            Company?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Organisation?: number | number[];
+            CostCenter?: string | string[];
+            Company?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
-            Organisation?: number;
+            CostCenter?: string;
+            Company?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
-            Organisation?: number;
+            CostCenter?: string;
+            Company?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Organisation?: number;
+            CostCenter?: string;
+            Company?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
-            Organisation?: number;
+            CostCenter?: string;
+            Company?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Organisation?: number;
+            CostCenter?: string;
+            Company?: number;
         };
     },
-    $select?: (keyof DepartmentEntity)[],
-    $sort?: string | (keyof DepartmentEntity)[],
+    $select?: (keyof OrganizationEntity)[],
+    $sort?: string | (keyof OrganizationEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface DepartmentEntityEvent {
+interface OrganizationEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<DepartmentEntity>;
+    readonly entity: Partial<OrganizationEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -74,30 +83,35 @@ interface DepartmentEntityEvent {
     }
 }
 
-interface DepartmentUpdateEntityEvent extends DepartmentEntityEvent {
-    readonly previousEntity: DepartmentEntity;
+interface OrganizationUpdateEntityEvent extends OrganizationEntityEvent {
+    readonly previousEntity: OrganizationEntity;
 }
 
-export class DepartmentRepository {
+export class OrganizationRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_DEPARTMENT",
+        table: "CODBEX_ORGANIZATION",
         properties: [
             {
                 name: "Id",
-                column: "DEPARTMENT_ID",
+                column: "ORGANIZATION_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "DEPARTMENT_NAME",
+                column: "ORGANIZATION_NAME",
                 type: "VARCHAR",
             },
             {
-                name: "Organisation",
-                column: "DEPARTMENT_ORGANISATION",
+                name: "CostCenter",
+                column: "ORGANIZATION_COSTCENTER",
+                type: "VARCHAR",
+            },
+            {
+                name: "Company",
+                column: "ORGANIZATION_COMPANY",
                 type: "INTEGER",
             }
         ]
@@ -106,58 +120,58 @@ export class DepartmentRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(DepartmentRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OrganizationRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: DepartmentEntityOptions): DepartmentEntity[] {
+    public findAll(options?: OrganizationEntityOptions): OrganizationEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): DepartmentEntity | undefined {
+    public findById(id: number): OrganizationEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: DepartmentCreateEntity): number {
+    public create(entity: OrganizationCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_DEPARTMENT",
+            table: "CODBEX_ORGANIZATION",
             entity: entity,
             key: {
                 name: "Id",
-                column: "DEPARTMENT_ID",
+                column: "ORGANIZATION_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: DepartmentUpdateEntity): void {
+    public update(entity: OrganizationUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_DEPARTMENT",
+            table: "CODBEX_ORGANIZATION",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "DEPARTMENT_ID",
+                column: "ORGANIZATION_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: DepartmentCreateEntity | DepartmentUpdateEntity): number {
-        const id = (entity as DepartmentUpdateEntity).Id;
+    public upsert(entity: OrganizationCreateEntity | OrganizationUpdateEntity): number {
+        const id = (entity as OrganizationUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as DepartmentUpdateEntity);
+            this.update(entity as OrganizationUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -169,22 +183,22 @@ export class DepartmentRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_DEPARTMENT",
+            table: "CODBEX_ORGANIZATION",
             entity: entity,
             key: {
                 name: "Id",
-                column: "DEPARTMENT_ID",
+                column: "ORGANIZATION_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: DepartmentEntityOptions): number {
+    public count(options?: OrganizationEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_DEPARTMENT"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ORGANIZATION"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -195,8 +209,8 @@ export class DepartmentRepository {
         return 0;
     }
 
-    private async triggerEvent(data: DepartmentEntityEvent | DepartmentUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-companies-Organisation-Department", ["trigger"]);
+    private async triggerEvent(data: OrganizationEntityEvent | OrganizationUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-companies-Companies-Organization", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -204,6 +218,6 @@ export class DepartmentRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-companies-Organisation-Department").send(JSON.stringify(data));
+        producer.topic("codbex-companies-Companies-Organization").send(JSON.stringify(data));
     }
 }

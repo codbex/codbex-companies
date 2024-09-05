@@ -1,31 +1,31 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { DepartmentRepository, DepartmentEntityOptions } from "../../dao/Organisation/DepartmentRepository";
+import { OrganizationRepository, OrganizationEntityOptions } from "../../dao/Companies/OrganizationRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-companies-Organisation-Department", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-companies-Companies-Organization", ["validate"]);
 
 @Controller
-class DepartmentService {
+class OrganizationService {
 
-    private readonly repository = new DepartmentRepository();
+    private readonly repository = new OrganizationRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: DepartmentEntityOptions = {
+            const options: OrganizationEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Company = parseInt(ctx.queryParameters.Company);
+            Company = isNaN(Company) ? ctx.queryParameters.Company : Company;
 
-            if (${masterEntityId} !== undefined) {
+            if (Company !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Company: Company
                     }
                 };
             }
@@ -41,7 +41,7 @@ class DepartmentService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class DepartmentService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Department not found");
+                HttpUtils.sendResponseNotFound("Organization not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class DepartmentService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Department not found");
+                HttpUtils.sendResponseNotFound("Organization not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -133,8 +133,11 @@ class DepartmentService {
         if (entity.Name === null || entity.Name === undefined) {
             throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 20) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        if (entity.Name?.length > 50) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [50] characters`);
+        }
+        if (entity.CostCenter?.length > 10) {
+            throw new ValidationError(`The 'CostCenter' exceeds the maximum length of [10] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

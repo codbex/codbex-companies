@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-companies.Organisation.Department';
+		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Organization';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-companies/gen/codbex-companies/api/Organisation/DepartmentService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/OrganizationService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-companies-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Organisation" && e.view === "Department" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Organisation" && e.view === "Department" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Companies" && e.view === "Organization" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Companies" && e.view === "Organization" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-companies.Organisation.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-companies.Companies.Company.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-companies.Organisation.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-companies.Companies.Company.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Company = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,10 +95,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
+			filter.$filter.equals.Company = Company;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Department", `Unable to count Department: '${response.message}'`);
+					messageHub.showAlertError("Organization", `Unable to count Organization: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Department", `Unable to list/filter Department: '${response.message}'`);
+						messageHub.showAlertError("Organization", `Unable to list/filter Organization: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -122,33 +122,33 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Department-details", {
+			messageHub.showDialogWindow("Organization-details", {
 				action: "select",
 				entity: entity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Department-filter", {
+			messageHub.showDialogWindow("Organization-filter", {
 				entity: $scope.filterEntity,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Department-details", {
+			messageHub.showDialogWindow("Organization-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Company",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Department-details", {
+			messageHub.showDialogWindow("Organization-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Company",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 			}, null, false);
 		};
@@ -156,8 +156,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Department?',
-				`Are you sure you want to delete Department? This action cannot be undone.`,
+				'Delete Organization?',
+				`Are you sure you want to delete Organization? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -172,7 +172,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Department", `Unable to delete Department: '${response.message}'`);
+							messageHub.showAlertError("Organization", `Unable to delete Organization: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
