@@ -5,10 +5,10 @@
  */
 const perspectiveData = {
 	id: 'Companies',
-	name: 'Companies',
+	name: 'Entities',
 	link: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/index.html',
 	order: 100,
-	icon: '/services/web/resources/unicons/university.svg',
+	icon: '/services/web/resources/unicons/copy.svg',
 };
 
 if (typeof exports !== 'undefined') {

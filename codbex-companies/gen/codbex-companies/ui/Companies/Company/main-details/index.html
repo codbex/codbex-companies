@@ -89,10 +89,10 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPhone" dg-required="false" dg-colon="true">Phone</fd-form-label>
                         </div>
-						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col fd-col-md--2 fd-col--3">
+						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col  fd-col-md--4 ">
 							<a href="tel:{{entity.Phone}}" class="fd-link">{{entity.Phone}}</a>
 						</div>
-                        <div ng-show="action !== 'select'" class="fd-col fd-col-md--2 fd-col--3">
+                        <div ng-show="action !== 'select'" class="fd-col  fd-col-md--4 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Phone'].$valid }}">
 	                            <fd-input id="idPhone"
 	                                name="Phone"
@@ -156,13 +156,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCountry" dg-required="false" dg-colon="true">Country</fd-form-label>
+                        	<fd-form-label for="idCountry" dg-required="true" dg-colon="true">Country</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idCountry"
 	                            name="Country"
 	                            state="{{ forms.details['Country'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Country"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsCountry"
@@ -172,13 +172,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCity" dg-required="false" dg-colon="true">City</fd-form-label>
+                        	<fd-form-label for="idCity" dg-required="true" dg-colon="true">City</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idCity"
 	                            name="City"
 	                            state="{{ forms.details['City'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.City"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsCity"

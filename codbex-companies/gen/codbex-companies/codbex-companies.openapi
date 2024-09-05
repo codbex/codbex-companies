@@ -448,6 +448,8 @@ components:
         - Email
         - Address
         - PostCode
+        - Country
+        - City
       properties:
         Id:
           type: integer
