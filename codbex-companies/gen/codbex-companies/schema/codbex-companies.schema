@@ -67,6 +67,30 @@
                 ]
             },
             {
+                "name": "CODBEX_COMPANYROLE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COMPANYROLE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANYROLE_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "COMPANYROLE_COMPANY"
+                    }
+                ]
+            },
+            {
                 "name": "Company_Country",
                 "type": "foreignKey",
                 "table": "CODBEX_COMPANY",
@@ -83,6 +107,15 @@
                 "columns": "COMPANY_CITY",
                 "referencedTable": "CODBEX_CITY",
                 "referencedColumns": "CITY_ID"
+            },
+            {
+                "name": "JobRole_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_COMPANYROLE",
+                "constraintName": "JobRole_Company",
+                "columns": "COMPANYROLE_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
             }
         ]
     },
