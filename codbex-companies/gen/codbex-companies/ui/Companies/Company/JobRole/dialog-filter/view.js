@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Company-details",
-    label: "Company",
-    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/dialog-window/index.html",
+    id: "JobRole-filter",
+    label: "JobRole Filter",
+    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/dialog-filter/index.html",
     perspectiveName: "Companies",
 };
 

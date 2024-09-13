@@ -58,7 +58,7 @@
                         "name": "Phone",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
-                        "widgetSize": "fd-col-md--2 fd-col--3",
+                        "widgetSize": "",
                         "widgetType": "TEL"
                     },
                     {
@@ -149,20 +149,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "company",
                 "menuLabel": "Company",
                 "name": "Company",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/university.svg",
+                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
                 "perspectiveLabel": "Companies",
                 "perspectiveName": "Companies",
-                "perspectiveOrder": "100",
+                "perspectiveOrder": "113",
                 "perspectiveRole": "",
                 "title": "Company",
                 "tooltip": "Company",
-                "type": "SETTING"
+                "type": "PRIMARY"
             },
             {
                 "properties": [
@@ -312,14 +312,84 @@
                 "title": "Country",
                 "tooltip": "Country",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "COMPANYROLE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "COMPANYROLE_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "COMPANYROLE_COMPANY",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Company",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "JobRole_Company",
+                        "relationshipType": "COMPOSITION",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "Company",
+                        "relationshipEntityPerspectiveName": "Companies",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    }
+                ],
+                "caption": "Manage entity CompanyRole",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COMPANYROLE\"",
+                "dataName": "COMPANYROLE",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "companyrole",
+                "menuLabel": "CompanyRole",
+                "name": "JobRole",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
+                "perspectiveLabel": "Companies",
+                "perspectiveName": "Companies",
+                "perspectiveOrder": "113",
+                "perspectiveRole": "",
+                "title": "CompanyRole",
+                "tooltip": "CompanyRole",
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [
             {
+                "name": "Organizations",
+                "label": "Organizations",
+                "icon": "/services/web/resources/unicons/building.svg",
+                "order": "105",
+                "role": {}
+            },
+            {
                 "name": "Companies",
                 "label": "Companies",
-                "icon": "/services/web/resources/unicons/university.svg",
-                "order": "100",
+                "icon": "/services/web/resources/unicons/user.svg",
+                "order": "113",
                 "role": {}
             }
         ],
