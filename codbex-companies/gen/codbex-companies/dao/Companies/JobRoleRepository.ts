@@ -81,23 +81,23 @@ interface JobRoleUpdateEntityEvent extends JobRoleEntityEvent {
 export class JobRoleRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_COMPANYROLE",
+        table: "CODBEX_JOBROLE",
         properties: [
             {
                 name: "Id",
-                column: "COMPANYROLE_ID",
+                column: "JOBROLE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "COMPANYROLE_NAME",
+                column: "JOBROLE_NAME",
                 type: "VARCHAR",
             },
             {
                 name: "Company",
-                column: "COMPANYROLE_COMPANY",
+                column: "JOBROLE_COMPANY",
                 type: "INTEGER",
             }
         ]
@@ -122,11 +122,11 @@ export class JobRoleRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_COMPANYROLE",
+            table: "CODBEX_JOBROLE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "COMPANYROLE_ID",
+                column: "JOBROLE_ID",
                 value: id
             }
         });
@@ -138,12 +138,12 @@ export class JobRoleRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_COMPANYROLE",
+            table: "CODBEX_JOBROLE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "COMPANYROLE_ID",
+                column: "JOBROLE_ID",
                 value: entity.Id
             }
         });
@@ -169,11 +169,11 @@ export class JobRoleRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_COMPANYROLE",
+            table: "CODBEX_JOBROLE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "COMPANYROLE_ID",
+                column: "JOBROLE_ID",
                 value: id
             }
         });
@@ -184,7 +184,7 @@ export class JobRoleRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_COMPANYROLE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_JOBROLE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

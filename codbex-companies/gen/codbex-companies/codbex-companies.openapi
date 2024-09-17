@@ -1364,6 +1364,7 @@ components:
     JobRole:
       type: object
       required:
+        - Name
       properties:
         Id:
           type: integer
@@ -1371,7 +1372,7 @@ components:
         Name:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 50
         Company:
           type: integer
           format: int32
@@ -1396,13 +1397,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 50
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 50
                 Company:
                   oneOf:
                     - type: integer
@@ -1426,13 +1427,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 50
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 50
                 Company:
                   oneOf:
                     - type: integer
@@ -1448,7 +1449,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 50
                 Company:
             greaterThan:
               type: object
@@ -1459,7 +1460,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 50
                 Company:
                   type: integer
                   format: int32
@@ -1472,7 +1473,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 50
                 Company:
                   type: integer
                   format: int32
@@ -1485,7 +1486,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 50
                 Company:
                   type: integer
                   format: int32
@@ -1498,7 +1499,7 @@ components:
                 Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 50
                 Company:
                   type: integer
                   format: int32
