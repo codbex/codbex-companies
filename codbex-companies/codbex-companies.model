@@ -317,7 +317,7 @@
                 "properties": [
                     {
                         "dataAutoIncrement": "true",
-                        "dataName": "COMPANYROLE_ID",
+                        "dataName": "JOBROLE_ID",
                         "dataNullable": "true",
                         "dataPrimaryKey": "true",
                         "dataType": "INTEGER",
@@ -328,18 +328,19 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
-                        "dataName": "COMPANYROLE_NAME",
+                        "dataLength": "50",
+                        "dataName": "JOBROLE_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
                         "name": "Name",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "50",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "COMPANYROLE_COMPANY",
+                        "dataName": "JOBROLE_COMPANY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "name": "Company",
@@ -355,16 +356,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
-                "caption": "Manage entity CompanyRole",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}COMPANYROLE\"",
-                "dataName": "COMPANYROLE",
+                "caption": "Manage entity JobRole",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}JOBROLE\"",
+                "dataName": "JOBROLE",
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
-                "menuKey": "companyrole",
-                "menuLabel": "CompanyRole",
+                "menuKey": "jobrole",
+                "menuLabel": "JobRole",
                 "name": "JobRole",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/user.svg",
@@ -372,8 +373,8 @@
                 "perspectiveName": "Companies",
                 "perspectiveOrder": "113",
                 "perspectiveRole": "",
-                "title": "CompanyRole",
-                "tooltip": "CompanyRole",
+                "title": "JobRole",
+                "tooltip": "JobRole",
                 "type": "DEPENDENT"
             }
         ],

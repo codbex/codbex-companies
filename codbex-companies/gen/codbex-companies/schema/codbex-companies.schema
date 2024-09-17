@@ -67,7 +67,7 @@
                 ]
             },
             {
-                "name": "CODBEX_COMPANYROLE",
+                "name": "CODBEX_JOBROLE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -75,18 +75,18 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "COMPANYROLE_ID"
+                        "name": "JOBROLE_ID"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 50,
                         "nullable": true,
-                        "name": "COMPANYROLE_NAME"
+                        "name": "JOBROLE_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "COMPANYROLE_COMPANY"
+                        "name": "JOBROLE_COMPANY"
                     }
                 ]
             },
@@ -111,9 +111,9 @@
             {
                 "name": "JobRole_Company",
                 "type": "foreignKey",
-                "table": "CODBEX_COMPANYROLE",
+                "table": "CODBEX_JOBROLE",
                 "constraintName": "JobRole_Company",
-                "columns": "COMPANYROLE_COMPANY",
+                "columns": "JOBROLE_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
             }
