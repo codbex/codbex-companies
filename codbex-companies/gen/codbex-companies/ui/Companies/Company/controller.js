@@ -112,6 +112,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsManager: $scope.optionsManager,
 				optionsCountry: $scope.optionsCountry,
 				optionsCity: $scope.optionsCity,
 			});
@@ -123,6 +124,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsManager: $scope.optionsManager,
 				optionsCountry: $scope.optionsCountry,
 				optionsCity: $scope.optionsCity,
 			});
@@ -132,6 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsManager: $scope.optionsManager,
 				optionsCountry: $scope.optionsCountry,
 				optionsCity: $scope.optionsCity,
 			});
@@ -170,15 +173,26 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Company-filter", {
 				entity: $scope.filterEntity,
+				optionsManager: $scope.optionsManager,
 				optionsCountry: $scope.optionsCountry,
 				optionsCity: $scope.optionsCity,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsManager = [];
 		$scope.optionsCountry = [];
 		$scope.optionsCity = [];
 
+
+		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/undefined/undefinedService.ts").then(function (response) {
+			$scope.optionsManager = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
 			$scope.optionsCountry = response.data.map(e => {
@@ -198,6 +212,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsManagerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsManager.length; i++) {
+				if ($scope.optionsManager[i].value === optionKey) {
+					return $scope.optionsManager[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsCountryValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCountry.length; i++) {
 				if ($scope.optionsCountry[i].value === optionKey) {

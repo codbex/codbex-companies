@@ -33,10 +33,12 @@
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "name": "Manager",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "50",
                         "widgetSize": "fd-col-md--6 fd-col--9",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DROPDOWN"
                     },
                     {
                         "dataLength": "100",
