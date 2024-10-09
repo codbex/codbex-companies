@@ -10,6 +10,6 @@
     },
     "dependencies": {
         "@codbex/codbex-countries": "0.3.0",
-        "@codbex/codbex-cities": "0.2.0"
+        "@codbex/codbex-cities": "0.3.0"
     }
 }
