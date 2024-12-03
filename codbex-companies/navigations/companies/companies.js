@@ -2,9 +2,8 @@ const navigationData = {
     id: 'companies-navigation',
     label: "Companies",
     view: "companies",
-    group: "configurations",
-    orderNumber: 1000,
-    lazyLoad: true,
+    group: "company",
+    orderNumber: 100,
     link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/index.html?embedded"
 };
 
