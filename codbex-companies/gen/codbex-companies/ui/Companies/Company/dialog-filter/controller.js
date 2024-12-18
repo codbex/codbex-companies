@@ -45,8 +45,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Manager) {
-				filter.$filter.contains.Manager = entity.Manager;
+			if (entity.Manager !== undefined) {
+				filter.$filter.equals.Manager = entity.Manager;
 			}
 			if (entity.Email) {
 				filter.$filter.contains.Email = entity.Email;

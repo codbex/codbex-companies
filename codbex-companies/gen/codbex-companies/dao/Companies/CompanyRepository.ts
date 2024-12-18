@@ -6,7 +6,7 @@ import { dao as daoApi } from "sdk/db";
 export interface CompanyEntity {
     readonly Id: number;
     Name: string;
-    Manager?: string;
+    Manager?: number;
     Email: string;
     Phone?: string;
     Address: string;
@@ -19,7 +19,7 @@ export interface CompanyEntity {
 
 export interface CompanyCreateEntity {
     readonly Name: string;
-    readonly Manager?: string;
+    readonly Manager?: number;
     readonly Email: string;
     readonly Phone?: string;
     readonly Address: string;
@@ -39,7 +39,7 @@ export interface CompanyEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Manager?: string | string[];
+            Manager?: number | number[];
             Email?: string | string[];
             Phone?: string | string[];
             Address?: string | string[];
@@ -52,7 +52,7 @@ export interface CompanyEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Manager?: string | string[];
+            Manager?: number | number[];
             Email?: string | string[];
             Phone?: string | string[];
             Address?: string | string[];
@@ -65,7 +65,7 @@ export interface CompanyEntityOptions {
         contains?: {
             Id?: number;
             Name?: string;
-            Manager?: string;
+            Manager?: number;
             Email?: string;
             Phone?: string;
             Address?: string;
@@ -78,7 +78,7 @@ export interface CompanyEntityOptions {
         greaterThan?: {
             Id?: number;
             Name?: string;
-            Manager?: string;
+            Manager?: number;
             Email?: string;
             Phone?: string;
             Address?: string;
@@ -91,7 +91,7 @@ export interface CompanyEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Manager?: string;
+            Manager?: number;
             Email?: string;
             Phone?: string;
             Address?: string;
@@ -104,7 +104,7 @@ export interface CompanyEntityOptions {
         lessThan?: {
             Id?: number;
             Name?: string;
-            Manager?: string;
+            Manager?: number;
             Email?: string;
             Phone?: string;
             Address?: string;
@@ -117,7 +117,7 @@ export interface CompanyEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Manager?: string;
+            Manager?: number;
             Email?: string;
             Phone?: string;
             Address?: string;
@@ -171,7 +171,7 @@ export class CompanyRepository {
             {
                 name: "Manager",
                 column: "COMPANY_MANAGER",
-                type: "VARCHAR",
+                type: "INTEGER",
             },
             {
                 name: "Email",

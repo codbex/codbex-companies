@@ -258,7 +258,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Manager: "abcd"
                       Email: "abcd"
                       Phone: "abcd"
                       Address: "abcd"
@@ -287,7 +286,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Manager: "abcd"
                       Email: "abcd"
                       Phone: "abcd"
                       Address: "abcd"
@@ -358,7 +356,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Manager: "abcd"
                       Email: "abcd"
                       Phone: "abcd"
                       Address: "abcd"
@@ -387,7 +384,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Manager: "abcd"
                       Email: "abcd"
                       Phone: "abcd"
                       Address: "abcd"
@@ -860,9 +856,8 @@ components:
           minLength: 0
           maxLength: 100
         Manager:
-          type: string
-          minLength: 0
-          maxLength: 50
+          type: integer
+          format: int32
         Email:
           type: string
           minLength: 0
@@ -923,15 +918,12 @@ components:
                         maxLength: 100
                 Manager:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 50
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 50
+                        type: integer
+                        format: int32
                 Email:
                   oneOf:
                     - type: string
@@ -1038,15 +1030,12 @@ components:
                         maxLength: 100
                 Manager:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 50
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 50
+                        type: integer
+                        format: int32
                 Email:
                   oneOf:
                     - type: string
@@ -1138,9 +1127,6 @@ components:
                   minLength: 0
                   maxLength: 100
                 Manager:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
                 Email:
                   type: string
                   minLength: 0
@@ -1178,9 +1164,8 @@ components:
                   minLength: 0
                   maxLength: 100
                 Manager:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
+                  type: integer
+                  format: int32
                 Email:
                   type: string
                   minLength: 0
@@ -1222,9 +1207,8 @@ components:
                   minLength: 0
                   maxLength: 100
                 Manager:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
+                  type: integer
+                  format: int32
                 Email:
                   type: string
                   minLength: 0
@@ -1266,9 +1250,8 @@ components:
                   minLength: 0
                   maxLength: 100
                 Manager:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
+                  type: integer
+                  format: int32
                 Email:
                   type: string
                   minLength: 0
@@ -1310,9 +1293,8 @@ components:
                   minLength: 0
                   maxLength: 100
                 Manager:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
+                  type: integer
+                  format: int32
                 Email:
                   type: string
                   minLength: 0

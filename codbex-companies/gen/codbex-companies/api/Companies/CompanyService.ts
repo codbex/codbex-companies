@@ -125,9 +125,6 @@ class CompanyService {
         if (entity.Name?.length > 100) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
         }
-        if (entity.Manager?.length > 50) {
-            throw new ValidationError(`The 'Manager' exceeds the maximum length of [50] characters`);
-        }
         if (entity.Email === null || entity.Email === undefined) {
             throw new ValidationError(`The 'Email' property is required, provide a valid value`);
         }

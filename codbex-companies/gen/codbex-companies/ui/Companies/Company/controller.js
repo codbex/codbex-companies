@@ -185,7 +185,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsCity = [];
 
 
-		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/undefined/undefinedService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
 			$scope.optionsManager = response.data.map(e => {
 				return {
 					value: e.Id,
