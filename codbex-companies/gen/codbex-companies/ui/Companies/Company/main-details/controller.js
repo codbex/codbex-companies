@@ -77,27 +77,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.$watch('entity.Country', function (newValue, oldValue) {
-			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.post("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts/search", {
-					$filter: {
-						equals: {
-							Country: newValue
-						}
-					}
-				}).then(function (response) {
-					$scope.optionsCity = response.data.map(e => {
-						return {
-							value: e.Id,
-							text: e.Name
-						}
-					});
-					if ($scope.action !== 'select' && newValue !== oldValue) {
-						$scope.entity.City = undefined;
-					}
-				});
-			}
-		});
+		$scope.serviceManager = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		$scope.serviceCountry = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
+		$scope.serviceCity = "/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts";
+
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

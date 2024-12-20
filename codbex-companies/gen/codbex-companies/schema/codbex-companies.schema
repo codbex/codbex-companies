@@ -18,8 +18,7 @@
                         "name": "COMPANY_NAME"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 50,
+                        "type": "INTEGER",
                         "nullable": true,
                         "name": "COMPANY_MANAGER"
                     },
@@ -89,6 +88,15 @@
                         "name": "JOBROLE_COMPANY"
                     }
                 ]
+            },
+            {
+                "name": "Company_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_COMPANY",
+                "constraintName": "Company_Employee",
+                "columns": "COMPANY_MANAGER",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "Company_Country",

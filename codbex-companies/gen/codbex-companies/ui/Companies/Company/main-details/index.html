@@ -39,13 +39,14 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idManager" dg-required="false" dg-colon="true">Manager</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--6 fd-col--9">
+                        <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idManager"
 	                            name="Manager"
 	                            state="{{ forms.details['Manager'].$valid ? '' : 'error' }}"
@@ -55,6 +56,7 @@
 	                            dropdown-items="optionsManager"
 	                            dg-placeholder="Search Manager ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -77,6 +79,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -102,6 +105,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -124,6 +128,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -146,6 +151,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -162,6 +168,7 @@
 	                            dropdown-items="optionsCountry"
 	                            dg-placeholder="Search Country ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -178,6 +185,7 @@
 	                            dropdown-items="optionsCity"
 	                            dg-placeholder="Search City ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -200,6 +208,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -222,6 +231,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>
@@ -234,14 +244,14 @@
 					<fd-button dg-label="{{action === 'create' ? 'Create' : 'Update'}}" dg-type="emphasized" ng-click="action === 'create' ? create() : update()" state="{{ forms.details.$valid ? '' : 'disabled' }}"></fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
-					<fd-button dg-label="Cancel" dg-type="transparent" ng-click="cancel()"></fd-button>
+					<fd-button dg-label="Cancel" ng-click="cancel()"></fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
 		</fd-bar>
 		<fd-bar bar-design="footer" ng-show="action === 'select' && entityActions.length && entity.Id">
 			<fd-bar-right>
 				<fd-bar-element ng-repeat="action in entityActions">
-					<fd-button dg-label="{{action.label}}" dg-type="emphasized" ng-click="triggerEntityAction(action)"></fd-button>
+					<fd-button dg-label="{{action.label}}" compact="true" ng-click="triggerEntityAction(action)"></fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
 		</fd-bar>
