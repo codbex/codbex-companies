@@ -8,6 +8,9 @@
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
+    "scripts": {
+        "build": "tsc"
+    },
     "dependencies": {
         "@codbex/codbex-countries": "0.4.0",
         "@codbex/codbex-cities": "0.5.0"
