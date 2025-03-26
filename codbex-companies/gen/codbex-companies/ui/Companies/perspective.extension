@@ -1,1 +1,5 @@
-{"module":"codbex-companies/gen/codbex-companies/ui/Companies/perspective.js","extensionPoint":"codbex-companies","description":"codbex-companies - Perspective - Companies"}
+{
+    "module": "codbex-companies/gen/codbex-companies/ui/Companies/perspective.js",
+    "extensionPoint": "codbex-companies",
+    "description": "codbex-companies - Perspective - Companies"
+}

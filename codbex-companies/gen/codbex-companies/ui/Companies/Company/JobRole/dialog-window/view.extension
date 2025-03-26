@@ -1,5 +1,6 @@
 {
     "module": "codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/dialog-window/view.js",
     "extensionPoint": "dialog-window",
-    "description": "codbex-companies - Application Dialog Window"
+    "description": "codbex-companies - Application Dialog Window",
+    "role": "codbex-companies.Companies.JobRoleReadOnly,codbex-companies.Companies.JobRoleFullAccess"
 }

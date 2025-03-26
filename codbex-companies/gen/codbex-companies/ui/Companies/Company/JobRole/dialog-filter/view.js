@@ -7,7 +7,7 @@ const viewData = {
     id: "JobRole-filter",
     label: "JobRole Filter",
     link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/dialog-filter/index.html",
-    perspectiveName: "Companies",
+    perspectiveName: "Companies"
 };
 
 if (typeof exports !== 'undefined') {

@@ -77,6 +77,18 @@
       "role": ""
     }
   },
+  "roles": [
+    {
+      "entityName": "Company",
+      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
+      "roleWrite": "codbex-companies.Companies.CompanyFullAccess"
+    },
+    {
+      "entityName": "JobRole",
+      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
+      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess"
+    }
+  ],
   "models": [
     {
       "properties": [
@@ -378,6 +390,9 @@
       "dataName": "COMPANY",
       "dataQuery": "",
       "description": "Manage entity Company",
+      "feedPassword": "YWRtaW4=",
+      "feedUsername": "YWRtaW4=",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_MASTER",
@@ -391,6 +406,8 @@
       "perspectiveName": "Companies",
       "perspectiveOrder": "113",
       "perspectiveRole": "",
+      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
+      "roleWrite": "codbex-companies.Companies.CompanyFullAccess",
       "title": "Company",
       "tooltip": "Company",
       "type": "PRIMARY",
@@ -775,6 +792,7 @@
       "dataName": "CITY",
       "dataQuery": "",
       "description": "Manage entity City",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -936,6 +954,7 @@
       "dataName": "COUNTRY",
       "dataQuery": "",
       "description": "Manage entity Country",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -1047,6 +1066,9 @@
       "dataName": "JOBROLE",
       "dataQuery": "",
       "description": "Manage entity JobRole",
+      "feedPassword": "YWRtaW4=",
+      "feedUsername": "YWRtaW4=",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_DETAILS",
@@ -1060,6 +1082,8 @@
       "perspectiveName": "Companies",
       "perspectiveOrder": "113",
       "perspectiveRole": "",
+      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
+      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess",
       "title": "JobRole",
       "tooltip": "JobRole",
       "type": "DEPENDENT",
@@ -1371,6 +1395,7 @@
       "dataName": "EMPLOYEE",
       "dataQuery": "",
       "description": "Manage entity Employee",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
