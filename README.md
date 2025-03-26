@@ -3,7 +3,7 @@ Companies Management Module
 
 ### Model
 
-<img width="544" alt="Screenshot 2024-09-17 at 10 24 35" src="https://github.com/user-attachments/assets/ece200d9-f646-437b-ad87-f04f1ff61f83">
+<img width="534" alt="image" src="https://github.com/user-attachments/assets/2662bfd4-9df4-4b07-a641-c62f4274bb1f" />
 
 ### Application
 
