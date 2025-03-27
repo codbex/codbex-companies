@@ -8,6 +8,9 @@ const viewData = {
     label: "Company",
     link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/dialog-window/index.html",
     perspectiveName: "Companies",
+    roles: [
+        "codbex-companies.Companies.CompanyReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

@@ -81,6 +81,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.serviceCountry = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
 		$scope.serviceCity = "/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts";
 
+
+		$scope.$watch('entity.Country', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.get($scope.serviceCountry + '/' + newValue).then(function (response) {
+					let valueFrom = response.data.Id;
+					entityApi.$http.post("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts/search", {
+						$filter: {
+							equals: {
+								Country: valueFrom
+							}
+						}
+					}).then(function (response) {
+						$scope.optionsCity = response.data.map(e => {
+							return {
+								value: e.Id,
+								text: e.Name
+							}
+						});
+						if ($scope.action !== 'select' && newValue !== oldValue) {
+							if ($scope.optionsCity.length == 1) {
+								$scope.entity.City = $scope.optionsCity[0].value;
+							} else {
+								$scope.entity.City = undefined;
+							}
+						}
+					});
+				});
+			}
+		});
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

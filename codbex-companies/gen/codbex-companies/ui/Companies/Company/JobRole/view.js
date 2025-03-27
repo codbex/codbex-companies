@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "bottom",
     link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/index.html",
-    perspectiveName: "Companies",
+    perspectiveName: "Companies"
 };
 
 if (typeof exports !== 'undefined') {
