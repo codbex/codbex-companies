@@ -7,6 +7,18 @@
   "dataSource": "DefaultDB",
   "fileName": "codbex-companies",
   "genFolderName": "codbex-companies",
+  "roles": [
+    {
+      "entityName": "Company",
+      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
+      "roleWrite": "codbex-companies.Companies.CompanyFullAccess"
+    },
+    {
+      "entityName": "JobRole",
+      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
+      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess"
+    }
+  ],
   "projectName": "codbex-companies",
   "workspaceName": "workspace",
   "filePath": "codbex-companies.model",
@@ -77,18 +89,6 @@
       "role": ""
     }
   },
-  "roles": [
-    {
-      "entityName": "Company",
-      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
-      "roleWrite": "codbex-companies.Companies.CompanyFullAccess"
-    },
-    {
-      "entityName": "JobRole",
-      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
-      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess"
-    }
-  ],
   "models": [
     {
       "properties": [
@@ -311,6 +311,10 @@
           "isRequiredProperty": true,
           "name": "City",
           "tooltip": "",
+          "widgetDependsOnEntity": "Country",
+          "widgetDependsOnFilterBy": "Country",
+          "widgetDependsOnProperty": "Country",
+          "widgetDependsOnValueFrom": "Id",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
@@ -631,6 +635,10 @@
             "isRequiredProperty": true,
             "name": "City",
             "tooltip": "",
+            "widgetDependsOnEntity": "Country",
+            "widgetDependsOnFilterBy": "Country",
+            "widgetDependsOnProperty": "Country",
+            "widgetDependsOnValueFrom": "Id",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
             "widgetIsMajor": true,
