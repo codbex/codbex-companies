@@ -1,6 +1,6 @@
 {
     "module": "codbex-companies/gen/codbex-companies/ui/Companies/Company/view.js",
-    "extensionPoint": "codbex-companies-view",
+    "extensionPoint": "application-views",
     "description": "codbex-companies - Application View",
     "role": "codbex-companies.Companies.CompanyReadOnly,codbex-companies.Companies.CompanyFullAccess"
 }
