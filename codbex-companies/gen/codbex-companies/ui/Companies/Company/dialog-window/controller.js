@@ -1,20 +1,17 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-companies.Companies.Company';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'messageHub', 'ViewParameters', 'entityApi', function ($scope,  $http, messageHub, ViewParameters, entityApi) {
-
+	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Company Details",
-			create: "Create Company",
-			update: "Update Company"
+			select: 'Company Details',
+			create: 'Create Company',
+			update: 'Update Company'
 		};
 		$scope.action = 'select';
 
@@ -29,89 +26,117 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsCity = params.optionsCity;
 		}
 
-		$scope.create = function () {
+		$scope.create = () => {
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.create(entity).then(function (response) {
-				if (response.status != 201) {
-					$scope.errorMessage = `Unable to create Company: '${response.message}'`;
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
+			EntityService.create(entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-companies.Companies.Company.entityCreated', data: response.data });
+				Dialogs.showAlert({
+					title: 'Company',
+					message: 'Company successfully created',
+					type: AlertTypes.Success
+				});
 				$scope.cancel();
-				messageHub.showAlertSuccess("Company", "Company successfully created");
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				$scope.$evalAsync(() => {
+					$scope.errorMessage = `Unable to create Company: '${message}'`;
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
+		$scope.update = () => {
 			let id = $scope.entity.Id;
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
-			entityApi.update(id, entity).then(function (response) {
-				if (response.status != 200) {
-					$scope.errorMessage = `Unable to update Company: '${response.message}'`;
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
+			EntityService.update(id, entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-companies.Companies.Company.entityUpdated', data: response.data });
 				$scope.cancel();
-				messageHub.showAlertSuccess("Company", "Company successfully updated");
+				Dialogs.showAlert({
+					title: 'Company',
+					message: 'Company successfully updated',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				$scope.$evalAsync(() => {
+					$scope.errorMessage = `Unable to update Company: '${message}'`;
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.serviceManager = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		$scope.serviceManager = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
 		
 		$scope.optionsManager = [];
 		
-		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
-			$scope.optionsManager = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+			$scope.optionsManager = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Manager',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCountry = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
+		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts';
 		
 		$scope.optionsCountry = [];
 		
-		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
-			$scope.optionsCountry = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts').then((response) => {
+			$scope.optionsCountry = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Country',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCity = "/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts";
+		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts';
 		
 		$scope.optionsCity = [];
 		
-		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
-			$scope.optionsCity = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts').then((response) => {
+			$scope.optionsCity = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'City',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$scope.$watch('entity.Country', function (newValue, oldValue) {
+		$scope.$watch('entity.Country', (newValue, oldValue) => {
 			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.get($scope.serviceCountry + '/' + newValue).then(function (response) {
+				$http.get($scope.serviceCountry + '/' + newValue).then((response) => {
 					let valueFrom = response.data.Id;
-					entityApi.$http.post("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts/search", {
+					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts/search', {
 						$filter: {
 							equals: {
 								Country: valueFrom
 							}
 						}
-					}).then(function (response) {
-						$scope.optionsCity = response.data.map(e => {
-							return {
-								value: e.Id,
-								text: e.Name
-							}
-						});
+					}).then((response) => {
+						$scope.optionsCity = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
 						if ($scope.action !== 'select' && newValue !== oldValue) {
 							if ($scope.optionsCity.length == 1) {
 								$scope.entity.City = $scope.optionsCity[0].value;
@@ -119,19 +144,31 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 								$scope.entity.City = undefined;
 							}
 						}
+					}, (error) => {
+						console.error(error);
 					});
+				}, (error) => {
+					console.error(error);
 				});
 			}
 		});
 
-		$scope.cancel = function () {
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
+
+		$scope.cancel = () => {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("Company-details");
+			Dialogs.closeWindow({ id: 'Company-details' });
 		};
 
-		$scope.clearErrorMessage = function () {
+		$scope.clearErrorMessage = () => {
 			$scope.errorMessage = null;
 		};
-
-	}]);
+	});

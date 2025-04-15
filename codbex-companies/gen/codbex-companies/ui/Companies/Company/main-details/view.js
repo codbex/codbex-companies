@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Company-details",
-    label: "Company",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/main-details/index.html",
-    perspectiveName: "Companies"
+    id: 'Company-details',
+    label: 'Company',
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/main-details/index.html',
+    perspectiveName: 'Companies'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }
