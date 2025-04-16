@@ -262,7 +262,7 @@
                 "name": "City",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/building.svg",
-                "perspectiveLabel": "Settings",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
