@@ -58,7 +58,7 @@ export interface JobRoleEntityOptions {
     },
     $select?: (keyof JobRoleEntity)[],
     $sort?: string | (keyof JobRoleEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -106,10 +106,10 @@ export class JobRoleRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(JobRoleRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(JobRoleRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: JobRoleEntityOptions): JobRoleEntity[] {
+    public findAll(options: JobRoleEntityOptions = {}): JobRoleEntity[] {
         return this.dao.list(options);
     }
 
