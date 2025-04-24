@@ -130,7 +130,7 @@ export interface CompanyEntityOptions {
     },
     $select?: (keyof CompanyEntity)[],
     $sort?: string | (keyof CompanyEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -224,10 +224,10 @@ export class CompanyRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CompanyRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CompanyRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: CompanyEntityOptions): CompanyEntity[] {
+    public findAll(options: CompanyEntityOptions = {}): CompanyEntity[] {
         return this.dao.list(options);
     }
 

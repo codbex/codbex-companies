@@ -1,5 +1,6 @@
 {
     "module": "codbex-companies/gen/codbex-companies/ui/Companies/perspective.js",
     "extensionPoint": "application-perspectives",
-    "description": "codbex-companies - Perspective - Companies"
+    "description": "codbex-companies - Perspective - Companies",
+    "role": "codbex-companies.Companies.CompanyReadOnly,codbex-companies.Companies.CompanyFullAccess"
 }
