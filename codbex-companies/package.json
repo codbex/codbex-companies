@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@codbex/codbex-countries": "1.0.0",
-        "@codbex/codbex-cities": "0.6.0"
+        "@codbex/codbex-cities": "0.6.0",
+        "@codbex/codbex-employees": "0.6.0"
     }
 }
