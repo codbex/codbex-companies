@@ -1,9 +1,22 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/JobRoleService.ts';
 	}])
-	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete JobRole? This action cannot be undone.',
+			deleteTitle: 'Delete JobRole?'
+		};
+
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-companies:codbex-companies-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-companies:codbex-companies-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-companies:codbex-companies-model.defaults.deleteTitle', { name: '$t(codbex-companies:codbex-companies-model.t.JOBROLE)' });
+			translated.deleteConfirm = LocaleService.t('codbex-companies:codbex-companies-model.messages.deleteConfirm', { name: '$t(codbex-companies:codbex-companies-model.t.JOBROLE)' });
+		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-companies-custom-action']).then((response) => {
 			$scope.pageActions = response.data.filter(e => e.perspective === 'Companies' && e.view === 'JobRole' && (e.type === 'page' || e.type === undefined));
@@ -13,8 +26,14 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
+				params: {
+					selectedMainEntityKey: 'Company',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+				},
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -22,10 +41,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerEntityAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
 				params: {
-					id: $scope.entity.Id
+					id: $scope.entity.Id,
+					selectedMainEntityKey: 'Company',
+					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
 				closeButton: true
 			});
@@ -99,8 +120,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'JobRole',
-						message: `Unable to list/filter JobRole: '${message}'`,
+						title: LocaleService.t('codbex-companies:codbex-companies-model.t.JOBROLE'),
+						message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLF', { name: '$t(codbex-companies:codbex-companies-model.t.JOBROLE)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -108,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'JobRole',
-					message: `Unable to count JobRole: '${message}'`,
+					title: LocaleService.t('codbex-companies:codbex-companies-model.t.JOBROLE'),
+					message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToCount', { name: '$t(codbex-companies:codbex-companies-model.t.JOBROLE)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -146,7 +167,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				id: 'JobRole-details',
 				params: {
 					action: 'create',
-					entity: {},
+					entity: {
+						'Company': $scope.selectedMainEntityId
+					},
 					selectedMainEntityKey: 'Company',
 					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
@@ -170,15 +193,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
 			Dialogs.showDialog({
-				title: 'Delete JobRole?',
-				message: `Are you sure you want to delete JobRole? This action cannot be undone.`,
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: 'Yes',
+					label: translated.yes,
 				}, {
 					id: 'delete-btn-no',
-					label: 'No',
+					label: translated.no,
 				}],
 				closeButton: false
 			}).then((buttonId) => {
@@ -189,8 +212,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: 'JobRole',
-							message: `Unable to delete JobRole: '${message}'`,
+							title: LocaleService.t('codbex-companies:codbex-companies-model.t.JOBROLE'),
+							message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToDelete', { name: '$t(codbex-companies:codbex-companies-model.t.JOBROLE)', message: message }),
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);

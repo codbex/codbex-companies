@@ -6,6 +6,9 @@
 const viewData = {
     id: 'JobRole-details',
     label: 'JobRole',
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.t.JOBROLE',
+    },
     path: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/dialog-window/index.html',
     perspectiveName: 'Companies'
 };

@@ -1,9 +1,22 @@
-angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete Company? This action cannot be undone.',
+			deleteTitle: 'Delete Company?'
+		};
+
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-companies:codbex-companies-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-companies:codbex-companies-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-companies:codbex-companies-model.defaults.deleteTitle', { name: '$t(codbex-companies:codbex-companies-model.t.COMPANY)' });
+			translated.deleteConfirm = LocaleService.t('codbex-companies:codbex-companies-model.messages.deleteConfirm', { name: '$t(codbex-companies:codbex-companies-model.t.COMPANY)' });
+		});
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataOffset = 0;
@@ -18,8 +31,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: action.label,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
 				path: action.path,
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -90,8 +105,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'Company',
-						message: `Unable to list/filter Company: '${message}'`,
+						title: LocaleService.t('codbex-companies:codbex-companies-model.t.COMPANY'),
+						message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLF', { name: '$t(codbex-companies:codbex-companies-model.t.COMPANY)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -99,8 +114,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'Company',
-					message: `Unable to count Company: '${message}'`,
+					title: LocaleService.t('codbex-companies:codbex-companies-model.t.COMPANY'),
+					message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToCount', { name: '$t(codbex-companies:codbex-companies-model.t.COMPANY)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -144,15 +159,15 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.deleteEntity = () => {
 			let id = $scope.selectedEntity.Id;
 			Dialogs.showDialog({
-				title: 'Delete Company?',
-				message: `Are you sure you want to delete Company? This action cannot be undone.`,
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: 'Yes',
+					label: translated.yes,
 				}, {
 					id: 'delete-btn-no',
-					label: 'No',
+					label: translated.no,
 				}],
 				closeButton: false
 			}).then((buttonId) => {
@@ -164,8 +179,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: 'Company',
-							message: `Unable to delete Company: '${message}'`,
+							title: LocaleService.t('codbex-companies:codbex-companies-model.t.COMPANY'),
+							message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToDelete', { name: '$t(codbex-companies:codbex-companies-model.t.COMPANY)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);
@@ -202,7 +217,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Manager',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
@@ -217,7 +232,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Country',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});
@@ -232,7 +247,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'City',
-				message: `Unable to load data: '${message}'`,
+				message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});

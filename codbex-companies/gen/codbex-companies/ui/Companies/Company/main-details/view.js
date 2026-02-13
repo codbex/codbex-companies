@@ -6,6 +6,9 @@
 const viewData = {
     id: 'Company-details',
     label: 'Company',
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.t.COMPANY',
+    },
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,

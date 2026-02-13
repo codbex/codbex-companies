@@ -6,6 +6,9 @@
 const viewData = {
     id: "Company-details",
     label: "Company",
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.t.COMPANY',
+    },
     path: "/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/dialog-window/index.html",
     perspectiveName: "Companies",
     roles: [
