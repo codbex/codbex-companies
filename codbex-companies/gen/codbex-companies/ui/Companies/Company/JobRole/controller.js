@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/JobRoleService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/JobRoleController.ts';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -100,21 +100,19 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				filter = $scope.filter;
 			}
 			if (!filter) {
-				filter = {};
+				filter = {
+					$filter: {
+						conditions: []
+					}
+				};
 			}
-			if (!filter.$filter) {
-				filter.$filter = {};
-			}
-			if (!filter.$filter.equals) {
-				filter.$filter.equals = {};
-			}
-			filter.$filter.equals.Company = Company;
+			filter.$filter.conditions.push({ propertyName: 'Company', operator: 'EQ', value: Company });
 			EntityService.count(filter).then((resp) => {
 				if (resp.data) {
 					$scope.dataCount = resp.data.count;
 				}
-				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
-				filter.$limit = $scope.dataLimit;
+				filter.$filter.offset = (pageNumber - 1) * $scope.dataLimit;
+				filter.$filter.limit = $scope.dataLimit;
 				EntityService.search(filter).then((response) => {
 					$scope.data = response.data;
 				}, (error) => {

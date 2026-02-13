@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -80,11 +80,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceManager = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
+		$scope.serviceManager = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
 		
 		$scope.optionsManager = [];
 		
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
 			$scope.optionsManager = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -98,11 +98,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts';
+		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
 		
 		$scope.optionsCountry = [];
 		
-		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryService.ts').then((response) => {
+		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
 			$scope.optionsCountry = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -116,11 +116,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				type: AlertTypes.Error
 			});
 		});
-		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts';
+		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts';
 		
 		$scope.optionsCity = [];
 		
-		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts').then((response) => {
+		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
 			$scope.optionsCity = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -139,12 +139,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			if (newValue !== undefined && newValue !== null) {
 				$http.get($scope.serviceCountry + '/' + newValue).then((response) => {
 					let valueFrom = response.data.Id;
-					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityService.ts/search', {
-						$filter: {
-							equals: {
-								Country: valueFrom
-							}
-						}
+					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+						conditions: [
+							{ propertyName: 'Country', operator: 'EQ', value: valueFrom }
+						]
 					}).then((response) => {
 						$scope.optionsCity = response.data.map(e => ({
 							value: e.Id,
