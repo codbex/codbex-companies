@@ -6,6 +6,12 @@
 const viewData = {
     id: 'JobRole-filter',
     label: 'JobRole Filter',
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.extName',
+        options: {
+            content: '$t(codbex-companies:codbex-companies-model.t.JOBROLE) $t(codbex-companies:codbex-companies-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/JobRole/dialog-filter/index.html',
     perspectiveName: 'Companies'
 };

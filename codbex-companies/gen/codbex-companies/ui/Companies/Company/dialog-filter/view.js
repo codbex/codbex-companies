@@ -6,6 +6,12 @@
 const viewData = {
     id: 'Company-filter',
     label: 'Company Filter',
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.extName',
+        options: {
+            content: '$t(codbex-companies:codbex-companies-model.t.COMPANY) $t(codbex-companies:codbex-companies-model.defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/Company/dialog-filter/index.html',
     perspectiveName: 'Companies'
 };

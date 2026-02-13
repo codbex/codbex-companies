@@ -6,6 +6,9 @@
 const viewData = {
     id: 'JobRole',
     label: 'JobRole',
+    translation: {
+        key: 'codbex-companies:codbex-companies-model.t.JOBROLE',
+    },
     region: 'bottom',
     lazyLoad: false,
 	autoFocusTab: true,

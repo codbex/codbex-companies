@@ -6,6 +6,9 @@
 const perspectiveData = {
 	id: 'Companies',
 	label: 'Companies',
+	translation: {
+        key: 'codbex-companies:codbex-companies-model.t.COMPANY',
+    },
 	path: '/services/web/codbex-companies/gen/codbex-companies/ui/Companies/index.html',
 	groupId: 'company-navigation-group',
 	order: 113,

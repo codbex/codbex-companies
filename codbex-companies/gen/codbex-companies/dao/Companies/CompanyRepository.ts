@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface CompanyEntity {
     readonly Id: number;
@@ -133,9 +133,10 @@ export interface CompanyEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface CompanyEntityEvent {
+export interface CompanyEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<CompanyEntity>;
@@ -146,7 +147,7 @@ interface CompanyEntityEvent {
     }
 }
 
-interface CompanyUpdateEntityEvent extends CompanyEntityEvent {
+export interface CompanyUpdateEntityEvent extends CompanyEntityEvent {
     readonly previousEntity: CompanyEntity;
 }
 
@@ -228,10 +229,11 @@ export class CompanyRepository {
     }
 
     public findAll(options: CompanyEntityOptions = {}): CompanyEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): CompanyEntity | undefined {
+    public findById(id: number, options: CompanyEntityOptions = {}): CompanyEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
