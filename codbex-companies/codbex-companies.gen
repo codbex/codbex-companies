@@ -1,28 +1,16 @@
 {
   "tablePrefix": "CODBEX_",
   "brand": "codbex",
-  "brandUrl": "https://codbex.com",
+  "brandUrl": "https://www.codbex.com/",
   "title": "Companies Management Module",
   "description": "Managing companies data",
-  "dataSource": "DefaultDB",
-  "fileName": "codbex-companies",
-  "genFolderName": "codbex-companies",
-  "roles": [
-    {
-      "entityName": "Company",
-      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
-      "roleWrite": "codbex-companies.Companies.CompanyFullAccess"
-    },
-    {
-      "entityName": "JobRole",
-      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
-      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess"
-    }
-  ],
   "projectName": "codbex-companies",
   "workspaceName": "workspace",
   "filePath": "codbex-companies.model",
-  "templateId": "template-application-angular/template/template.js",
+  "templateId": "template-application-angular-v2/template/template.js",
+  "fileName": "codbex-companies",
+  "genFolderName": "codbex-companies",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Companies": {
       "views": [
@@ -82,6 +70,18 @@
       "role": ""
     }
   },
+  "roles": [
+    {
+      "entityName": "Company",
+      "roleRead": "codbex-companies.Companies.CompanyReadOnly",
+      "roleWrite": "codbex-companies.Companies.CompanyFullAccess"
+    },
+    {
+      "entityName": "JobRole",
+      "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
+      "roleWrite": "codbex-companies.Companies.JobRoleFullAccess"
+    }
+  ],
   "tprefix": "codbex-companies-model",
   "models": [
     {
