@@ -3,7 +3,7 @@
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
   "title": "Companies Management Module",
-  "description": "Managing companies data",
+  "description": "Managing Companies Data",
   "projectName": "codbex-companies",
   "workspaceName": "workspace",
   "filePath": "codbex-companies.model",
