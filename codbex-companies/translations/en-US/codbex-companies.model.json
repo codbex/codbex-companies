@@ -97,6 +97,10 @@
       "EMPLOYEE_NATIONALITY": "Nationality",
       "EMPLOYEE_MARTIALSTATUS": "MartialStatus",
       "EMPLOYEE_IBAN": "IBAN",
+      "JOBROLE": "JobRole",
+      "JOBROLE_ID": "Id",
+      "JOBROLE_NAME": "Name",
+      "JOBROLE_COMPANY": "Company",
       "Organizations": "Organizations",
       "Companies": "Companies"
     }
