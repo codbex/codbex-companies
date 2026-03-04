@@ -1,9 +1,9 @@
 {
   "tablePrefix": "CODBEX_",
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Companies Management Module",
-  "description": "Managing Companies Data",
+  "brandUrl": "c",
+  "title": "codbex.com",
+  "description": "test",
   "fileName": "codbex-companies",
   "genFolderName": "codbex-companies",
   "dataSource": "DefaultDB",
