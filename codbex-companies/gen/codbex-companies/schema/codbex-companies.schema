@@ -92,15 +92,6 @@
                 "referencedTable": "CODBEX_CITY",
                 "referencedColumns": "CITY_ID"
             }
-            {
-                "name": "JobRole_Company",
-                "type": "foreignKey",
-                "table": "CODBEX_JOBROLE",
-                "constraintName": "JobRole_Company",
-                "columns": "JOBROLE_COMPANY",
-                "referencedTable": "CODBEX_COMPANY",
-                "referencedColumns": "COMPANY_ID"
-            }
         ]
     },
     "datasource": "DefaultDB"
