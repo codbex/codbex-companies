@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COMPANY_ID",
                         "dataNullable": "true",
@@ -18,6 +19,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "COMPANY_NAME",
                         "dataNullable": "false",
@@ -32,6 +34,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COMPANY_MANAGER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -50,6 +53,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "COMPANY_EMAIL",
                         "dataNullable": "false",
@@ -64,6 +68,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "COMPANY_PHONE",
                         "dataNullable": "true",
@@ -77,6 +82,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "COMPANY_ADDRESS",
                         "dataNullable": "false",
@@ -91,6 +97,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "COMPANY_POSTCODE",
                         "dataNullable": "false",
@@ -105,6 +112,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COMPANY_COUNTRY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -124,6 +132,7 @@
                         "relationshipEntityPerspectiveLabel": "Settings"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COMPANY_CITY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -147,6 +156,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "COMPANY_TIN",
                         "dataNullable": "true",
@@ -160,6 +170,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "34",
                         "dataName": "COMPANY_IBAN",
                         "dataNullable": "true",
@@ -205,6 +216,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CITY_ID",
                         "dataNullable": "true",
@@ -219,6 +231,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CITY_NAME",
                         "dataNullable": "true",
@@ -232,6 +245,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CITY_COUNTRY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -278,6 +292,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COUNTRY_ID",
                         "dataNullable": "true",
@@ -292,6 +307,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "COUNTRY_NAME",
                         "dataNullable": "true",
@@ -306,6 +322,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "2",
                         "dataName": "COUNTRY_CODE2",
                         "dataNullable": "true",
@@ -320,6 +337,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_CODE3",
                         "dataNullable": "true",
@@ -334,6 +352,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_NUMERIC",
                         "dataNullable": "true",
@@ -378,84 +397,7 @@
             {
                 "properties": [
                     {
-                        "dataAutoIncrement": "true",
-                        "dataName": "JOBROLE_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Id",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "50",
-                        "dataName": "JOBROLE_NAME",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Name",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "50",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "JOBROLE_COMPANY",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Company",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "JobRole_Company",
-                        "relationshipType": "COMPOSITION",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipEntityName": "Company",
-                        "relationshipEntityPerspectiveName": "Companies",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    }
-                ],
-                "caption": "Manage entity JobRole",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}JOBROLE\"",
-                "dataName": "JOBROLE",
-                "dataQuery": "",
-                "description": "Manage entity JobRole",
-                "feedPassword": "YWRtaW4=",
-                "feedUsername": "YWRtaW4=",
-                "generateDefaultRoles": "true",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
-                "menuIndex": "100",
-                "menuKey": "jobrole",
-                "menuLabel": "JobRole",
-                "multilingual": "false",
-                "name": "JobRole",
-                "perspectiveHeader": "",
-                "perspectiveIcon": "/services/web/resources/unicons/user.svg",
-                "perspectiveLabel": "Companies",
-                "perspectiveName": "Companies",
-                "perspectiveNavId": "company-navigation-group",
-                "perspectiveOrder": "113",
-                "perspectiveRole": "",
-                "roleRead": "codbex-companies.Companies.JobRoleReadOnly",
-                "roleWrite": "codbex-companies.Companies.JobRoleFullAccess",
-                "title": "JobRole",
-                "tooltip": "JobRole",
-                "type": "DEPENDENT"
-            },
-            {
-                "properties": [
-                    {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EMPLOYEE_ID",
                         "dataNullable": "true",
@@ -470,6 +412,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_FIRSTNAME",
                         "dataNullable": "true",
@@ -486,6 +429,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_MIDDLENAME",
                         "dataNullable": "true",
@@ -501,6 +445,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_LASTNAME",
                         "dataNullable": "true",
@@ -517,6 +462,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "dataLength": "70",
                         "dataName": "EMPLOYEE_NAME",
@@ -532,6 +478,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_BIRTHDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -545,6 +492,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "10",
                         "dataName": "EMPLOYEE_PERSONALNUMBER",
                         "dataNullable": "true",
@@ -559,6 +507,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_GENDER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -577,6 +526,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_NATIONALITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -595,6 +545,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_MARTIALSTATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -613,6 +564,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_IBAN",
                         "dataNullable": "true",

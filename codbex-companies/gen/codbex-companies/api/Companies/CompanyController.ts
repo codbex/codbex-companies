@@ -27,7 +27,7 @@ class CompanyController {
             const options: Options = {
                 limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : 20,
                 offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : 0,
-                language: request.getLocale().slice(0, 2)
+                language: request.getLocale().split("_")[0]
             };
 
             return this.repository.findAll(options);
@@ -44,7 +44,7 @@ class CompanyController {
             this.checkPermissions('write');
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity) as any;
-            response.setHeader('Content-Location', '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts/' + entity.Id);
+            response.setHeader('Content-Location', '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts/' + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -96,7 +96,7 @@ class CompanyController {
             this.checkPermissions('read');
             const id = parseInt(ctx.pathParameters.id);
             const options: Options = {
-                language: request.getLocale().slice(0, 2)
+                language: request.getLocale().split("_")[0]
             };
             const entity = this.repository.findById(id, options);
             if (entity) {
