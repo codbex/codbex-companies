@@ -200,6 +200,9 @@ class CompanyController {
         if (entity.TIN?.length > 20) {
             throw new ValidationError(`The 'TIN' exceeds the maximum length of [20] characters`);
         }
+        if (entity.IBAN === null || entity.IBAN === undefined) {
+            throw new ValidationError(`The 'IBAN' property is required, provide a valid value`);
+        }
         if (entity.IBAN?.length > 34) {
             throw new ValidationError(`The 'IBAN' exceeds the maximum length of [34] characters`);
         }
