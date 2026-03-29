@@ -25,6 +25,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 100,
+                        "unique": true,
                         "name": "COMPANY_EMAIL"
                     },
                     {
@@ -60,7 +61,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 34,
-                        "nullable": true,
+                        "unique": true,
                         "name": "COMPANY_IBAN"
                     }
                 ]

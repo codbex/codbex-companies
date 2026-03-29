@@ -91,9 +91,8 @@ export class CompanyEntity {
         name: 'COMPANY_IBAN',
         type: 'string',
         length: 34,
-        nullable: true,
     })
-    public IBAN?: string;
+    public IBAN!: string;
 
 }
 

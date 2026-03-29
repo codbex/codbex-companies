@@ -200,8 +200,14 @@ class CompanyController {
         if (entity.TIN?.length > 20) {
             throw new ValidationError(`The 'TIN' exceeds the maximum length of [20] characters`);
         }
+        if (entity.IBAN === null || entity.IBAN === undefined) {
+            throw new ValidationError(`The 'IBAN' property is required, provide a valid value`);
+        }
         if (entity.IBAN?.length > 34) {
             throw new ValidationError(`The 'IBAN' exceeds the maximum length of [34] characters`);
+        }
+        if (!RegExp(/^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/).test(entity.IBAN)) {
+            throw new ValidationError(`The value provided for the 'IBAN' property ('[${entity.IBAN}]') doesn't match the required pattern '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'`);
         }
         for (const next of validationModules) {
             next.validate(entity);
