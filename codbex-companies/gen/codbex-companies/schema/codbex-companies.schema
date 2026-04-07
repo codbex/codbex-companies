@@ -63,6 +63,28 @@
                         "length": 34,
                         "unique": true,
                         "name": "COMPANY_IBAN"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "COMPANY_CREATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_CREATEDBY"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "COMPANY_UPDATEDAT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_UPDATEDBY"
                     }
                 ]
             },
