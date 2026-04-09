@@ -94,6 +94,44 @@ export class CompanyEntity {
     })
     public IBAN!: string;
 
+    @Documentation('CreatedAt')
+    @Column({
+        name: 'COMPANY_CREATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @CreatedAt()
+    public CreatedAt?: Date;
+
+    @Documentation('CreatedBy')
+    @Column({
+        name: 'COMPANY_CREATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @CreatedBy()
+    public CreatedBy?: string;
+
+    @Documentation('UpdatedAt')
+    @Column({
+        name: 'COMPANY_UPDATEDAT',
+        type: 'timestamp',
+        nullable: true,
+    })
+    @UpdatedAt()
+    public UpdatedAt?: Date;
+
+    @Documentation('UpdatedBy')
+    @Column({
+        name: 'COMPANY_UPDATEDBY',
+        type: 'string',
+        length: 20,
+        nullable: true,
+    })
+    @UpdatedBy()
+    public UpdatedBy?: string;
+
 }
 
 (new CompanyEntity());

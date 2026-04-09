@@ -58,6 +58,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		}});
 		Dialogs.addMessageListener({ topic: 'codbex-companies.Companies.Company.entitySelected', handler: (data) => {
 			$scope.$evalAsync(() => {
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsManager = data.optionsManager;
 				$scope.optionsCountry = data.optionsCountry;
@@ -76,6 +82,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		}});
 		Dialogs.addMessageListener({ topic: 'codbex-companies.Companies.Company.updateEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
+				if (data.entity.CreatedAt) {
+					data.entity.CreatedAt = new Date(data.entity.CreatedAt);
+				}
+				if (data.entity.UpdatedAt) {
+					data.entity.UpdatedAt = new Date(data.entity.UpdatedAt);
+				}
 				$scope.entity = data.entity;
 				$scope.optionsManager = data.optionsManager;
 				$scope.optionsCountry = data.optionsCountry;
