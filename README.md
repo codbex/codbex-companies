@@ -27,10 +27,10 @@
 | City      | INTEGER   | Not Null, FK                 | References city                              |
 | TIN       | VARCHAR   | Length: 20, Nullable         | Tax identification number                    |
 | IBAN      | VARCHAR   | Length: 34, Unique, Not Null | Company IBAN                                 |
-| CreatedAt | TIMESTAMP | Audit                        | Creation timestamp                           |
-| CreatedBy | VARCHAR   | Audit, Length: 20        | Created by user                              |
-| UpdatedAt | TIMESTAMP | Audit                     | Last update timestamp                        |
-| UpdatedBy | VARCHAR   | Audit, Length: 20         | Updated by user                              |
+| CreatedAt | TIMESTAMP | Audit                        | Timestamp when the entry was created.                       |
+| CreatedBy | VARCHAR   | Audit, Length: 20        | User who created the entry.                             |
+| UpdatedAt | TIMESTAMP | Audit                     | Timestamp when the entry was updated.                       |
+| UpdatedBy | VARCHAR   | Audit, Length: 20         | User who updated the entry.                              |
 
 ## 📦 Dependencies
 
