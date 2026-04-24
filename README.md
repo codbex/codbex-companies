@@ -28,9 +28,9 @@
 | TIN       | VARCHAR   | Length: 20, Nullable         | Tax identification number                    |
 | IBAN      | VARCHAR   | Length: 34, Unique, Not Null | Company IBAN                                 |
 | CreatedAt | TIMESTAMP | Audit                        | Creation timestamp                           |
-| CreatedBy | VARCHAR   | Length: 20, Audit         | Created by user                              |
+| CreatedBy | VARCHAR   | Audit, Length: 20        | Created by user                              |
 | UpdatedAt | TIMESTAMP | Audit                     | Last update timestamp                        |
-| UpdatedBy | VARCHAR   | Length: 20, Audit         | Updated by user                              |
+| UpdatedBy | VARCHAR   | Audit, Length: 20         | Updated by user                              |
 
 ## 📦 Dependencies
 
