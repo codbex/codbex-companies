@@ -222,6 +222,95 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//----------------Dropdowns-----------------//
 
+		const lastSearchValuesManager = new Set();
+		const allValuesManager = [];
+		let loadMoreOptionsManagerCounter = 0;
+		$scope.optionsManagerLoading = false;
+		$scope.optionsManagerHasMore = true;
+
+		$scope.loadMoreOptionsManager = () => {
+			const limit = 20;
+			$scope.optionsManagerLoading = true;
+			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts?$limit=${limit}&$offset=${++loadMoreOptionsManagerCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesManager.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesManager.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsManager.find(o => o.value === e.value)) {
+						$scope.optionsManager.push(e);
+					}
+				})
+				$scope.optionsManagerHasMore = resultValues.length > 0;
+				$scope.optionsManagerLoading = false;
+			}, (error) => {
+				$scope.optionsManagerLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Manager',
+					message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsManagerChange = (event) => {
+			if (allValuesManager.length === 0) {
+				allValuesManager.push(...$scope.optionsManager);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesManager.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsManager = allValuesManager;
+				$scope.optionsManagerHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsManagerHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesManager).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesManager.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesManager.push(e);
+							}
+						});
+						$scope.optionsManager = allValuesManager.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'Manager',
+							message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesManager.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
 		$scope.refreshManager = () => {
 			$scope.optionsManager = [];
 			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
@@ -229,6 +318,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					value: e.Id,
 					text: e.Name
 				}));
+				allValuesManager.length === 0;
 			}, (error) => {
 				console.error(error);
 				const message = error.data ? error.data.message : '';
@@ -239,6 +329,95 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				});
 			});
 		};
+		const lastSearchValuesCountry = new Set();
+		const allValuesCountry = [];
+		let loadMoreOptionsCountryCounter = 0;
+		$scope.optionsCountryLoading = false;
+		$scope.optionsCountryHasMore = true;
+
+		$scope.loadMoreOptionsCountry = () => {
+			const limit = 20;
+			$scope.optionsCountryLoading = true;
+			$http.get(`/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCountryCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesCountry.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesCountry.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsCountry.find(o => o.value === e.value)) {
+						$scope.optionsCountry.push(e);
+					}
+				})
+				$scope.optionsCountryHasMore = resultValues.length > 0;
+				$scope.optionsCountryLoading = false;
+			}, (error) => {
+				$scope.optionsCountryLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Country',
+					message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsCountryChange = (event) => {
+			if (allValuesCountry.length === 0) {
+				allValuesCountry.push(...$scope.optionsCountry);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesCountry.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsCountry = allValuesCountry;
+				$scope.optionsCountryHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsCountryHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesCountry).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesCountry.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesCountry.push(e);
+							}
+						});
+						$scope.optionsCountry = allValuesCountry.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'Country',
+							message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesCountry.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
 		$scope.refreshCountry = () => {
 			$scope.optionsCountry = [];
 			$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
@@ -246,6 +425,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					value: e.Id,
 					text: e.Name
 				}));
+				allValuesCountry.length === 0;
 			}, (error) => {
 				console.error(error);
 				const message = error.data ? error.data.message : '';
@@ -256,6 +436,95 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				});
 			});
 		};
+		const lastSearchValuesCity = new Set();
+		const allValuesCity = [];
+		let loadMoreOptionsCityCounter = 0;
+		$scope.optionsCityLoading = false;
+		$scope.optionsCityHasMore = true;
+
+		$scope.loadMoreOptionsCity = () => {
+			const limit = 20;
+			$scope.optionsCityLoading = true;
+			$http.get(`/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCityCounter * limit}`)
+			.then((response) => {
+				const optionValues = allValuesCity.map(e => e.value);
+				const resultValues = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+				const newValues = [];
+				resultValues.forEach(e => {
+					if (!optionValues.includes(e.value)) {
+						allValuesCity.push(e);
+						newValues.push(e);
+					}
+				});
+				newValues.forEach(e => {
+					if (!$scope.optionsCity.find(o => o.value === e.value)) {
+						$scope.optionsCity.push(e);
+					}
+				})
+				$scope.optionsCityHasMore = resultValues.length > 0;
+				$scope.optionsCityLoading = false;
+			}, (error) => {
+				$scope.optionsCityLoading = false;
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'City',
+					message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
+
+		$scope.onOptionsCityChange = (event) => {
+			if (allValuesCity.length === 0) {
+				allValuesCity.push(...$scope.optionsCity);
+			}
+			if (event.originalEvent.target.value === '') {
+				allValuesCity.sort((a, b) => a.text.localeCompare(b.text));
+				$scope.optionsCity = allValuesCity;
+				$scope.optionsCityHasMore = true;
+			} else if (isText(event.which)) {
+				$scope.optionsCityHasMore = false;
+				let cacheHit = false;
+				Array.from(lastSearchValuesCity).forEach(e => {
+					if (event.originalEvent.target.value.startsWith(e)) {
+						cacheHit = true;
+					}
+				})
+				if (!cacheHit) {
+					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+						conditions: [
+							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
+						]
+					}).then((response) => {
+						const optionValues = allValuesCity.map(e => e.value);
+						const searchResult = response.data.map(e => ({
+							value: e.Id,
+							text: e.Name
+						}));
+						searchResult.forEach(e => {
+							if (!optionValues.includes(e.value)) {
+								allValuesCity.push(e);
+							}
+						});
+						$scope.optionsCity = allValuesCity.filter(e => e.text.toLowerCase().startsWith(event.originalEvent.target.value.toLowerCase()));
+					}, (error) => {
+						console.error(error);
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'City',
+							message: LocaleService.t('codbex-companies:codbex-companies-model.messages.error.unableToLoad', { message: message }),
+							type: AlertTypes.Error
+						});
+					});
+					lastSearchValuesCity.add(event.originalEvent.target.value);
+				}
+			}
+		};
+
 		$scope.refreshCity = () => {
 			$scope.optionsCity = [];
 			$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
@@ -263,6 +532,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					value: e.Id,
 					text: e.Name
 				}));
+				allValuesCity.length === 0;
 			}, (error) => {
 				console.error(error);
 				const message = error.data ? error.data.message : '';
@@ -273,6 +543,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				});
 			});
 		};
+
+		function isText(keycode) {
+			if ((keycode >= 48 && keycode <= 90) || (keycode >= 96 && keycode <= 111) || (keycode >= 186 && keycode <= 222) || [8, 46, 173].includes(keycode)) return true;
+			return false;
+		}
 
 		//----------------Dropdowns-----------------//	
 	});

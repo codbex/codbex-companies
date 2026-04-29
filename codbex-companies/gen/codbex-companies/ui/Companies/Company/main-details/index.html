@@ -49,8 +49,14 @@
 	                            ng-model="entity.Manager"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsManager"
+								ng-keyup="onOptionsManagerChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_MANAGER)'} }}"
 								btn-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.showHide' | t:{'name':'Manager'} }}" list-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.options' | t:{'name':'Manager'} }}">
+								    <bk-list-action-item ng-if="optionsManagerHasMore" ng-click="loadMoreOptionsManager()">
+										<bk-busy-indicator ng-if="optionsManagerLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsManagerLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsManagerLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -156,8 +162,14 @@
 	                            ng-model="entity.Country"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCountry"
+								ng-keyup="onOptionsCountryChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_COUNTRY)'} }}"
 								btn-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.showHide' | t:{'name':'Country'} }}" list-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.options' | t:{'name':'Country'} }}">
+								    <bk-list-action-item ng-if="optionsCountryHasMore" ng-click="loadMoreOptionsCountry()">
+										<bk-busy-indicator ng-if="optionsCountryLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCountryLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCountryLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
@@ -177,8 +189,14 @@
 	                            ng-model="entity.City"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCity"
+								ng-keyup="onOptionsCityChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_CITY)'} }}"
 								btn-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.showHide' | t:{'name':'City'} }}" list-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.options' | t:{'name':'City'} }}">
+								    <bk-list-action-item ng-if="optionsCityHasMore" ng-click="loadMoreOptionsCity()">
+										<bk-busy-indicator ng-if="optionsCityLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsCityLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsCityLoading">More Options</span>
+									</bk-list-action-item>
 	                        </bk-combobox-input>
 	                    </div>
 	                    <div class="fd-col fd-col--full">
