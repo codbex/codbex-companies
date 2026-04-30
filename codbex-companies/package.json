@@ -9,9 +9,9 @@
         "registry": "https://npm.pkg.github.com"
     },
     "dependencies": {
-        "@codbex/codbex-countries": "^1.4.0",
-        "@codbex/codbex-cities": "^1.3.0",
-        "@codbex/codbex-employees": "^1.4.0",
+        "@codbex/codbex-countries": "^1.5.0",
+        "@codbex/codbex-cities": "^1.5.0",
+        "@codbex/codbex-employees": "^1.6.0",
         "@codbex/codbex-navigation-groups": "^1.1.0"
     }
 }
