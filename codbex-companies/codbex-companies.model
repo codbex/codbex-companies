@@ -52,10 +52,9 @@
                     {
                         "auditType": "NONE",
                         "dataName": "COMPANY_MANAGER",
-                        "dataNullable": "false",
+                        "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Manager",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",

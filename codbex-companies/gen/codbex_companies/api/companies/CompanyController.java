@@ -172,9 +172,6 @@ public class CompanyController {
         if (entity.Email != null && entity.Email.length() > 100) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Email' exceeds the maximum length of 100");
         }
-        if (entity.Manager == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Manager' property is required");
-        }
         if (entity.Phone != null && entity.Phone.length() > 20) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Phone' exceeds the maximum length of 20");
         }

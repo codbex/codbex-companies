@@ -31,7 +31,7 @@ public class CompanyEntity {
     @Documentation("Email")
     public String Email;
 
-    @Column(name = "COMPANY_MANAGER", nullable = false)
+    @Column(name = "COMPANY_MANAGER", nullable = true)
     @Documentation("Manager")
     public Integer Manager;
 
