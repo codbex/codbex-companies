@@ -51,12 +51,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Name', operator: 'LIKE', value: `%${entity.Name}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.Manager !== undefined) {
-			const condition = { propertyName: 'Manager', operator: 'EQ', value: entity.Manager };
-			filter.$filter.conditions.push(condition);
-		}
 		if (entity.Email) {
 			const condition = { propertyName: 'Email', operator: 'LIKE', value: `%${entity.Email}%` };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.Manager !== undefined) {
+			const condition = { propertyName: 'Manager', operator: 'EQ', value: entity.Manager };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.Phone) {
@@ -67,16 +67,16 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 			const condition = { propertyName: 'Address', operator: 'LIKE', value: `%${entity.Address}%` };
 			filter.$filter.conditions.push(condition);
 		}
-		if (entity.PostCode) {
-			const condition = { propertyName: 'PostCode', operator: 'LIKE', value: `%${entity.PostCode}%` };
-			filter.$filter.conditions.push(condition);
-		}
 		if (entity.Country !== undefined) {
 			const condition = { propertyName: 'Country', operator: 'EQ', value: entity.Country };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.City !== undefined) {
 			const condition = { propertyName: 'City', operator: 'EQ', value: entity.City };
+			filter.$filter.conditions.push(condition);
+		}
+		if (entity.PostCode) {
+			const condition = { propertyName: 'PostCode', operator: 'LIKE', value: `%${entity.PostCode}%` };
 			filter.$filter.conditions.push(condition);
 		}
 		if (entity.TIN) {

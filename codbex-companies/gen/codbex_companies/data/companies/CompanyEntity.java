@@ -27,13 +27,13 @@ public class CompanyEntity {
     @Documentation("Name")
     public String Name;
 
-    @Column(name = "COMPANY_MANAGER", nullable = true)
-    @Documentation("Manager")
-    public Integer Manager;
-
     @Column(name = "COMPANY_EMAIL", length = 100, nullable = false, unique = true)
     @Documentation("Email")
     public String Email;
+
+    @Column(name = "COMPANY_MANAGER", nullable = false)
+    @Documentation("Manager")
+    public Integer Manager;
 
     @Column(name = "COMPANY_PHONE", length = 20, nullable = true)
     @Documentation("Phone")
@@ -43,10 +43,6 @@ public class CompanyEntity {
     @Documentation("Address")
     public String Address;
 
-    @Column(name = "COMPANY_POSTCODE", length = 20, nullable = false)
-    @Documentation("PostCode")
-    public String PostCode;
-
     @Column(name = "COMPANY_COUNTRY", nullable = false)
     @Documentation("Country")
     public Integer Country;
@@ -54,6 +50,10 @@ public class CompanyEntity {
     @Column(name = "COMPANY_CITY", nullable = false)
     @Documentation("City")
     public Integer City;
+
+    @Column(name = "COMPANY_POSTCODE", length = 20, nullable = false)
+    @Documentation("PostCode")
+    public String PostCode;
 
     @Column(name = "COMPANY_TIN", length = 20, nullable = true)
     @Documentation("TIN")

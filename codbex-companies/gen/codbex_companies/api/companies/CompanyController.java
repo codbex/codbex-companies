@@ -28,7 +28,7 @@ import java.util.Set;
 @Documentation("codbex-companies - Company Controller")
 public class CompanyController {
 
-    private static final Set<String> FILTER_FIELDS = Set.of("Id", "Name", "Manager", "Email", "Phone", "Address", "PostCode", "Country", "City", "TIN", "IBAN", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
+    private static final Set<String> FILTER_FIELDS = Set.of("Id", "Name", "Email", "Manager", "Phone", "Address", "Country", "City", "PostCode", "TIN", "IBAN", "CreatedAt", "CreatedBy", "UpdatedAt", "UpdatedBy");
 
     @Inject
     private CompanyRepository repository;
@@ -172,6 +172,9 @@ public class CompanyController {
         if (entity.Email != null && entity.Email.length() > 100) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Email' exceeds the maximum length of 100");
         }
+        if (entity.Manager == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Manager' property is required");
+        }
         if (entity.Phone != null && entity.Phone.length() > 20) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Phone' exceeds the maximum length of 20");
         }
@@ -181,17 +184,17 @@ public class CompanyController {
         if (entity.Address != null && entity.Address.length() > 200) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Address' exceeds the maximum length of 200");
         }
-        if (entity.PostCode == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'PostCode' property is required");
-        }
-        if (entity.PostCode != null && entity.PostCode.length() > 20) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'PostCode' exceeds the maximum length of 20");
-        }
         if (entity.Country == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'Country' property is required");
         }
         if (entity.City == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'City' property is required");
+        }
+        if (entity.PostCode == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'PostCode' property is required");
+        }
+        if (entity.PostCode != null && entity.PostCode.length() > 20) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'PostCode' exceeds the maximum length of 20");
         }
         if (entity.TIN != null && entity.TIN.length() > 20) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'TIN' exceeds the maximum length of 20");

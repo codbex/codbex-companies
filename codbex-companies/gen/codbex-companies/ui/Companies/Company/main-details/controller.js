@@ -100,35 +100,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.serviceCountry = '/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController';
 		$scope.serviceCity = '/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController';
 
-
-		$scope.$watch('entity.Country', (newValue, oldValue) => {
-			if (newValue !== undefined && newValue !== null) {
-				$http.get($scope.serviceCountry + '/' + newValue).then((response) => {
-					let valueFrom = response.data.Id;
-					$http.post('/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController/search', {
-						conditions: [
-							{ propertyName: 'Country', operator: 'EQ', value: valueFrom }
-						]
-					}).then((response) => {
-						$scope.optionsCity = response.data.map(e => ({
-							value: e.Id,
-							text: e.Name
-						}));
-						if ($scope.action !== 'select' && newValue !== oldValue) {
-							if ($scope.optionsCity.length == 1) {
-								$scope.entity.City = $scope.optionsCity[0].value;
-							} else {
-								$scope.entity.City = undefined;
-							}
-						}
-					}, (error) => {
-						console.error(error);
-					});
-				}, (error) => {
-					console.error(error);
-				});
-			}
-		});
 		//-----------------Events-------------------//
 
 		$scope.create = () => {

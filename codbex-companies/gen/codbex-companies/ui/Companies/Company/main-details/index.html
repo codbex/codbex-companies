@@ -39,33 +39,6 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idManager" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_MANAGER' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--7 ">
-	                        <bk-combobox-input input-id="idManager"
-	                            name="Manager"
-	                            state="{{ forms.details['Manager'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.Manager"
-	                            is-readonly="action === 'select'"
-	                            dropdown-items="optionsManager"
-								ng-keyup="onOptionsManagerChange($event)"
-	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_MANAGER)'} }}"
-								btn-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.showHide' | t:{'name':'Manager'} }}" list-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.options' | t:{'name':'Manager'} }}">
-								    <bk-list-action-item ng-if="optionsManagerHasMore" ng-click="loadMoreOptionsManager()">
-										<bk-busy-indicator ng-if="optionsManagerLoading" size="m"></bk-busy-indicator>
-										<span ng-if="!optionsManagerLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
-										<span ng-if="!optionsManagerLoading">More Options</span>
-									</bk-list-action-item>
-	                        </bk-combobox-input>
-	                    </div>
-	                    <div class="fd-col fd-col--full">
-							<bk-button glyph="sap-icon--add" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.add' | t }}" ng-click="createManager()" ng-hide="action === 'select'"></bk-button>
-							<bk-button glyph="sap-icon--refresh" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.refresh' | t }}" ng-click="refreshManager()" ng-hide="action === 'select'"></bk-button>
-						</div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idEmail" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_EMAIL' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4 fd-col--6">
@@ -84,6 +57,33 @@
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idManager" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_MANAGER' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--7 ">
+	                        <bk-combobox-input input-id="idManager"
+	                            name="Manager"
+	                            state="{{ forms.details['Manager'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.Manager"
+	                            is-readonly="action === 'select'"
+	                            dropdown-items="optionsManager"
+								ng-keyup="onOptionsManagerChange($event)"
+	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_MANAGER)'} }}"
+								btn-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.showHide' | t:{'name':'Manager'} }}" list-aria-label="{{ 'codbex-companies:codbex-companies-model.aria.options' | t:{'name':'Manager'} }}">
+								    <bk-list-action-item ng-if="optionsManagerHasMore" ng-click="loadMoreOptionsManager()">
+										<bk-busy-indicator ng-if="optionsManagerLoading" size="m"></bk-busy-indicator>
+										<span ng-if="!optionsManagerLoading" class="sap-icon sap-icon--navigation-down-arrow" role="presentation"></span>
+										<span ng-if="!optionsManagerLoading">More Options</span>
+									</bk-list-action-item>
+	                        </bk-combobox-input>
+	                    </div>
+	                    <div class="fd-col fd-col--full">
+							<bk-button glyph="sap-icon--add" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.add' | t }}" ng-click="createManager()" ng-hide="action === 'select'"></bk-button>
+							<bk-button glyph="sap-icon--refresh" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.refresh' | t }}" ng-click="refreshManager()" ng-hide="action === 'select'"></bk-button>
+						</div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
@@ -125,27 +125,6 @@
 									ng-maxlength="200.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_ADDRESS)'} }}">
-	                            </bk-input>
-							</bk-form-input-message>
-	                    </div>
-                    </bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPostCode" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE' | t }}</bk-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--2 fd-col--3">
-							<bk-form-input-message
-								state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
-								<bk-input id="idPostCode"
-	                                name="PostCode"
-	                                state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.PostCode"
-	                                ng-readonly="action === 'select'"
-									ng-maxlength="20.0"
-	                                type="text"
-	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
@@ -203,6 +182,27 @@
 							<bk-button glyph="sap-icon--add" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.add' | t }}" ng-click="createCity()" ng-hide="action === 'select'"></bk-button>
 							<bk-button glyph="sap-icon--refresh" aria-label="{{ 'codbex-companies:codbex-companies-model.defaults.refresh' | t }}" ng-click="refreshCity()" ng-hide="action === 'select'"></bk-button>
 						</div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idPostCode" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE' | t }}</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2 fd-col--3">
+							<bk-form-input-message
+								state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
+								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
+								<bk-input id="idPostCode"
+	                                name="PostCode"
+	                                state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
+									ng-required="true"
+	                                ng-model="entity.PostCode"
+	                                ng-readonly="action === 'select'"
+									ng-maxlength="20.0"
+	                                type="text"
+	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
