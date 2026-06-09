@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyController.ts';
+		EntityServiceProvider.baseUrl = '/services/java/codbex-companies/gen/codbex_companies/api/companies/CompanyController';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -92,11 +92,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceManager = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts';
+		$scope.serviceManager = '/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController';
 		
 		$scope.optionsManager = [];
 		
-		$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts').then((response) => {
+		$http.get('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController').then((response) => {
 			$scope.optionsManager = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -120,7 +120,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsManager = () => {
 			const limit = 20;
 			$scope.optionsManagerLoading = true;
-			$http.get(`/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts?$limit=${limit}&$offset=${++loadMoreOptionsManagerCounter * limit}`)
+			$http.get(`/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController?$limit=${limit}&$offset=${++loadMoreOptionsManagerCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesManager.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -170,7 +170,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeController.ts/search', {
+					$http.post('/services/java/codbex-employees/gen/codbex_employees/api/employees/EmployeeController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -199,11 +199,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 			}
 		};
-		$scope.serviceCountry = '/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts';
+		$scope.serviceCountry = '/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController';
 		
 		$scope.optionsCountry = [];
 		
-		$http.get('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts').then((response) => {
+		$http.get('/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController').then((response) => {
 			$scope.optionsCountry = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -227,7 +227,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCountry = () => {
 			const limit = 20;
 			$scope.optionsCountryLoading = true;
-			$http.get(`/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCountryCounter * limit}`)
+			$http.get(`/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController?$limit=${limit}&$offset=${++loadMoreOptionsCountryCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCountry.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -277,7 +277,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-countries/gen/codbex-countries/api/Settings/CountryController.ts/search', {
+					$http.post('/services/java/codbex-countries/gen/codbex_countries/api/settings/CountryController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -306,11 +306,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}
 			}
 		};
-		$scope.serviceCity = '/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts';
+		$scope.serviceCity = '/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController';
 		
 		$scope.optionsCity = [];
 		
-		$http.get('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts').then((response) => {
+		$http.get('/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController').then((response) => {
 			$scope.optionsCity = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -334,7 +334,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.loadMoreOptionsCity = () => {
 			const limit = 20;
 			$scope.optionsCityLoading = true;
-			$http.get(`/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts?$limit=${limit}&$offset=${++loadMoreOptionsCityCounter * limit}`)
+			$http.get(`/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController?$limit=${limit}&$offset=${++loadMoreOptionsCityCounter * limit}`)
 			.then((response) => {
 				const optionValues = allValuesCity.map(e => e.value);
 				const resultValues = response.data.map(e => ({
@@ -384,7 +384,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}
 				})
 				if (!cacheHit) {
-					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+					$http.post('/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController/search', {
 						conditions: [
 							{ propertyName: 'Name', operator: 'LIKE', value: `${event.originalEvent.target.value}%` }
 						]
@@ -423,7 +423,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			if (newValue !== undefined && newValue !== null) {
 				$http.get($scope.serviceCountry + '/' + newValue).then((response) => {
 					let valueFrom = response.data.Id;
-					$http.post('/services/ts/codbex-cities/gen/codbex-cities/api/Settings/CityController.ts/search', {
+					$http.post('/services/java/codbex-cities/gen/codbex_cities/api/settings/CityController/search', {
 						conditions: [
 							{ propertyName: 'Country', operator: 'EQ', value: valueFrom }
 						]
