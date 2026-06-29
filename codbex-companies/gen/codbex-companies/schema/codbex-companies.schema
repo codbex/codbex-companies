@@ -18,15 +18,15 @@
                         "name": "COMPANY_NAME"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "COMPANY_MANAGER"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 100,
                         "unique": true,
                         "name": "COMPANY_EMAIL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "COMPANY_MANAGER"
                     },
                     {
                         "type": "VARCHAR",
@@ -40,17 +40,17 @@
                         "name": "COMPANY_ADDRESS"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "name": "COMPANY_POSTCODE"
-                    },
-                    {
                         "type": "INTEGER",
                         "name": "COMPANY_COUNTRY"
                     },
                     {
                         "type": "INTEGER",
                         "name": "COMPANY_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "COMPANY_POSTCODE"
                     },
                     {
                         "type": "VARCHAR",
