@@ -1,0 +1,10 @@
+[
+    {
+        "name": "codbex-companies.Companies.CompanyReadOnly",
+        "description": "A role that grants read only permission for Company."
+    },
+    {
+        "name": "codbex-companies.Companies.CompanyFullAccess",
+        "description": "A role that grants full access for Company."
+    }
+]

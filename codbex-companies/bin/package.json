@@ -1,0 +1,17 @@
+{
+    "name": "@codbex/codbex-companies",
+    "version": "1.6.0",
+    "repository": {
+        "url": "https://github.com/codbex/codbex-companies.git",
+        "type": "git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "dependencies": {
+        "@codbex/codbex-countries": "^1.5.0",
+        "@codbex/codbex-cities": "^1.5.0",
+        "@codbex/codbex-employees": "^1.6.0",
+        "@codbex/codbex-navigation-groups": "^1.1.0"
+    }
+}

@@ -8,7 +8,6 @@
         <title config-title></title>
         <script type="text/javascript" src="view.js"></script>
         <meta name="platform-links" category="ng-view">
-		<script type="text/javascript" src="/services/web/dashboard/services/entity.js"></script>
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
@@ -17,21 +16,17 @@
 			<bk-message-strip class="fd-margin--md" ng-show="errorMessage" glyph="sap-icon--message-error" state="error" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
 
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
-                <bk-form-group label="{{formHeaders[action]}}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                <bk-form-group label="{{ 'codbex-companies:codbex-companies-model.defaults.formGrpFilter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idName" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_NAME' | t }}</bk-form-label>
+                        	<bk-form-label for="idName" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_NAME' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'100.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Name'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idName"
 	                                name="Name"
 	                                state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Name"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="100.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_NAME)'} }}">
@@ -41,18 +36,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idEmail" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_EMAIL' | t }}</bk-form-label>
+                        	<bk-form-label for="idEmail" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_EMAIL' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--fd-col-md--4 fd-col--6">
-							<bk-form-input-message
-								state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'100.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Email'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idEmail"
 	                                name="Email"
 	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Email"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="100.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_EMAIL)'} }}">
@@ -62,15 +53,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idManager" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_MANAGER' | t }}</bk-form-label>
+                        	<bk-form-label for="idManager" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_MANAGER' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idManager"
 	                            name="Manager"
 	                            state="{{ forms.details['Manager'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
 	                            ng-model="entity.Manager"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsManager"
 								ng-keyup="onOptionsManagerChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_MANAGER)'} }}"
@@ -85,21 +74,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPhone" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_PHONE' | t }}</bk-form-label>
+                        	<bk-form-label for="idPhone" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_PHONE' | t }}</bk-form-label>
                         </div>
-						<div ng-show="action === 'select'" style="margin: 4px 0px; padding: 0px 10px" class="fd-col  fd-col-md--4 ">
-							<bk-link href="tel:{{entity.Phone}}">{{entity.Phone}}</bk-link>
-						</div>
-                        <div ng-show="action !== 'select'" class="fd-col  fd-col-md--4 ">
-							<bk-form-input-message state="{{ forms.details['Phone'].$valid ? '' : 'error' }}" text="{{ 'codbex-companies:codbex-companies-model.messages.error.pattern' | t:{'rule':'^[0-9]{0,14}$'} }}">
+                        <div class="fd-col fd-col-md--4">
+							<bk-form-input-message state="{{ forms.details['Phone'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idPhone"
 	                                name="Phone"
 	                                state="{{ forms.details['Phone'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.Phone"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
-	                                input-rules="{ patterns:['^[0-9]{0,14}$'] }"
 	                                type="tel"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_PHONE)'} }}">
 	                            </bk-input>
@@ -108,18 +91,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idAddress" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_ADDRESS' | t }}</bk-form-label>
+                        	<bk-form-label for="idAddress" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_ADDRESS' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['Address'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'200.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Address'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idAddress"
 	                                name="Address"
 	                                state="{{ forms.details['Address'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Address"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="200.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_ADDRESS)'} }}">
@@ -129,15 +108,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCountry" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_COUNTRY' | t }}</bk-form-label>
+                        	<bk-form-label for="idCountry" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_COUNTRY' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idCountry"
 	                            name="Country"
 	                            state="{{ forms.details['Country'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
 	                            ng-model="entity.Country"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCountry"
 								ng-keyup="onOptionsCountryChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_COUNTRY)'} }}"
@@ -152,15 +129,13 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCity" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CITY' | t }}</bk-form-label>
+                        	<bk-form-label for="idCity" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CITY' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
+                        <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idCity"
 	                            name="City"
 	                            state="{{ forms.details['City'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
 	                            ng-model="entity.City"
-	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsCity"
 								ng-keyup="onOptionsCityChange($event)"
 	                            placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputSearch' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_CITY)'} }}"
@@ -175,18 +150,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idPostCode" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE' | t }}</bk-form-label>
+                        	<bk-form-label for="idPostCode" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--fd-col-md--2 fd-col--3">
-							<bk-form-input-message
-								state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idPostCode"
 	                                name="PostCode"
 	                                state="{{ forms.details['PostCode'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.PostCode"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_POSTCODE)'} }}">
@@ -196,18 +167,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idTIN" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_TIN' | t }}</bk-form-label>
+                        	<bk-form-label for="idTIN" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_TIN' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--fd-col-md--4 fd-col--6">
-							<bk-form-input-message
-								state="{{ forms.details['TIN'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['TIN'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idTIN"
 	                                name="TIN"
 	                                state="{{ forms.details['TIN'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.TIN"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="20.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_TIN)'} }}">
@@ -217,20 +184,15 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idIBAN" ng-required="true" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_IBAN' | t }}</bk-form-label>
+                        	<bk-form-label for="idIBAN" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_IBAN' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--fd-col-md--4 fd-col--6">
-							<bk-form-input-message
-								state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.pattern' | t:{'rule':'^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idIBAN"
 	                                name="IBAN"
 	                                state="{{ forms.details['IBAN'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.IBAN"
-	                                ng-readonly="action === 'select'"
 									ng-maxlength="34.0"
-									input-rules="{ patterns: ['^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$'] }"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_IBAN)'} }}">
 	                            </bk-input>
@@ -239,18 +201,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCreatedAt" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CREATEDAT' | t }}</bk-form-label>
+                        	<bk-form-label for="idCreatedAt" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CREATEDAT' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['CreatedAt'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CreatedAt'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idCreatedAt"
 	                                name="CreatedAt"
 	                                state="{{ forms.details['CreatedAt'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.CreatedAt"
-	                                ng-readonly="true"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_CREATEDAT)'} }}">
 	                            </bk-input>
@@ -259,18 +217,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCreatedBy" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CREATEDBY' | t }}</bk-form-label>
+                        	<bk-form-label for="idCreatedBy" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_CREATEDBY' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['CreatedBy'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['CreatedBy'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idCreatedBy"
 	                                name="CreatedBy"
 	                                state="{{ forms.details['CreatedBy'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.CreatedBy"
-	                                ng-readonly="true"
 									ng-maxlength="20.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_CREATEDBY)'} }}">
@@ -280,18 +234,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idUpdatedAt" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDAT' | t }}</bk-form-label>
+                        	<bk-form-label for="idUpdatedAt" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDAT' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['UpdatedAt'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['UpdatedAt'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idUpdatedAt"
 	                                name="UpdatedAt"
 	                                state="{{ forms.details['UpdatedAt'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.UpdatedAt"
-	                                ng-readonly="true"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDAT)'} }}">
 	                            </bk-input>
@@ -300,18 +250,14 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idUpdatedBy" ng-required="false" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDBY' | t }}</bk-form-label>
+                        	<bk-form-label for="idUpdatedBy" colon="true">{{ 'codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDBY' | t }}</bk-form-label>
                         </div>
-                        <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message
-								state="{{ forms.details['UpdatedBy'].$valid ? '' : 'error' }}"
-								text="{{ 'codbex-companies:codbex-companies-model.messages.error.lengthMax' | t:{'max':'20.0'} }}">
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['UpdatedBy'].$valid ? '' : 'error' }}" text="{{'codbex-companies:codbex-companies-model.messages.error.incorrectInput' | t}}">
 								<bk-input id="idUpdatedBy"
 	                                name="UpdatedBy"
 	                                state="{{ forms.details['UpdatedBy'].$valid ? '' : 'error' }}"
-									ng-required="false"
 	                                ng-model="entity.UpdatedBy"
-	                                ng-readonly="true"
 									ng-maxlength="20.0"
 	                                type="text"
 	                                placeholder="{{ 'codbex-companies:codbex-companies-model.messages.inputEnter' | t:{'name':'$t(codbex-companies:codbex-companies-model.t.COMPANY_UPDATEDBY)'} }}">
@@ -323,11 +269,13 @@
             </bk-fieldset>
         </bk-scrollbar>
 
-		<bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+        <bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<bk-bar-right>
 				<bk-bar-element>
-					<bk-button ng-if="action === 'create'" label="{{'codbex-companies:codbex-companies-model.defaults.create' | t}}" state="emphasized" ng-click="create()" ng-disabled="!forms.details.$valid"></bk-button>
-					<bk-button ng-if="action !== 'create'" label="{{'codbex-companies:codbex-companies-model.defaults.update' | t}}" state="emphasized" ng-click="update()" ng-disabled="!forms.details.$valid"></bk-button>
+					<bk-button label="{{ 'codbex-companies:codbex-companies-model.defaults.filter' | t }}" state="emphasized" ng-click="filter()"></bk-button>
+				</bk-bar-element>
+				<bk-bar-element>
+					<bk-button label="{{ 'codbex-companies:codbex-companies-model.defaults.reset' | t }}" ng-click="resetFilter()"></bk-button>
 				</bk-bar-element>
 				<bk-bar-element>
 					<bk-button label="{{ 'codbex-companies:codbex-companies-model.defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
